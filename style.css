@@ -1,1 +1,28 @@
 
+html {
+    background: #C0C0C0;
+}
+h1 {
+    color:rebeccapurple
+}
+nav ul {
+    list-style-type: none; /* Quita los puntos de la lista */
+    padding: 0; /* Elimina el espacio interno que el navegador trae por defecto */
+    margin:0; /* Elimina el espacio interno  del margen que el navegador trae por defecto */
+    display: flex; /* Pone los elementos uno al lado del otro */
+    gap: 20px; /* Espacio entre cada enlace */
+    background-color: #f4f4f4; /* Un gris suave de fondo */
+    padding: 10px;
+}
+
+nav a {
+    /* Quita el subrayado azul */
+    text-decoration: none; /* Quita el subrayado azul que traen los enlaces por defecto */
+    color: rebeccapurple; /* Aplica el color púrpura en honor a Rebecca Meyer */
+    font-weight: bold; /* Pone el texto en negrita (le da más "peso" visual) */
+}
+
+nav a:hover {
+    color:#000; /* Cambia a negro cuando pasas el mouse por encima */ 
+    text-decoration: underline; /* Vuelve a poner el subrayado solo cuando el mouse está encima */
+}
