@@ -1,9 +1,45 @@
-
 html {
     background: #C0C0C0;
 }
 h1 {
     color:rebeccapurple
+}
+
+
+
+/* CSS Selectors */
+/* CSS Selector: Element Selector*/
+h2 {
+    color:red;
+}
+
+/* CSS Selector: Class Selector */
+.class_verde{
+    color:green;
+}
+
+/* CSS Selector: ID Selector */
+#id_azul{
+    color:blue;
+}
+
+/* CSS Selector: Attribute Selector */
+p[draggable="false"] {
+    color: yellow;
+    font-weight: bold;
+}
+
+/* CSS Selector: Universal Selector */
+* {
+    font-style: italic;
+    font-size: 25px;
+    text-align: center;
+}
+
+
+
+h6{
+    color:red2;
 }
 nav ul {
     list-style-type: none; /* Quita los puntos de la lista */
