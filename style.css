@@ -13,6 +13,10 @@ h2 {
     color:red;
 }
 
+img{
+    width: 100%;
+}
+
 /* CSS Selector: Class Selector */
 .class_verde{
     color:green;
@@ -32,7 +36,7 @@ p[draggable="false"] {
 /* CSS Selector: Universal Selector */
 * {
     font-style: italic;
-    font-size: 25px;
+    font-size: 23px;
     text-align: center;
 }
 
