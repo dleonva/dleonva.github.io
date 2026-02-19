@@ -1,6 +1,20 @@
 html {
-    background: white;
+    /* background-color: #FAFAFA; */
+    /* background-color: #F4F4F4; */
+    /* FloralWhite */
+    /* background-color: #FFFAF0; */
+    /* Un crema muy sutil */
+    /* background-color: #FDFBF7; */
+    /* "Cool Gray" (Gris Frío) */
+    background-color: #F5F7FA;
+
 }
+
+body {
+    /* Gris oscuro, mejor que el negro puro */
+    color: #333333;            
+}
+
 h1 {
     color:rebeccapurple
 }
