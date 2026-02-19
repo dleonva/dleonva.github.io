@@ -1,14 +1,13 @@
 html {
-    background: #C0C0C0;
+    background: white;
 }
 h1 {
     color:rebeccapurple
 }
 
 
-
 /* CSS Selectors */
-/* CSS Selector: Element Selector*/
+/* CSS Selector: Type Selector*/
 h2 {
     color:red;
 }
@@ -24,9 +23,50 @@ img{
 }
 
 /* CSS Selector: ID Selector */
+/* =========================================
+   1. ID SELECTORS
+   ========================================= */
 #id_azul{
     color:blue;
 }
+#id_css_logo{
+    display: block;
+    width: 17%;
+}
+
+.class_mdn_link{
+    color:rebeccapurple;
+    font-weight: bold;
+    /* Quitamos subrayado por defecto para limpieza */
+    text-decoration:none;
+}
+
+/* Pseudo-elemento ::after SOLO para la clase .class_mdn_link */
+.class_mdn_link::after {
+    /* Código Unicode para la flecha (↗) más limpia */
+    content: "\2197";
+    /* La hacemos un 30% más pequeña que el texto */
+    font-size: 0.7em;
+    /* La elevamos como si fuera una potencia (x²) */
+    vertical-align:super;
+    /* Un gris suave para que no compita con el texto */
+    color:#C0C0C0;
+    /* Un respiro milimétrico entre texto y flecha */
+    margin-left: 3px;
+    /* Asegura que las propiedades funcionen bien */
+    display: inline-block;
+}
+
+
+/* Efecto al pasar el mouse por el enlace */
+.class_mdn_link:hover{
+    text-decoration: underline;
+    /* Un fondo sutil al interactuar */
+    background-color:#f0f0f0;
+}
+
+
+
 
 /* CSS Selector: Attribute Selector */
 p[draggable="false"] {
@@ -34,17 +74,29 @@ p[draggable="false"] {
     font-weight: bold;
 }
 
-/* CSS Selector: Universal Selector */
-* {
-    font-style: italic;
-    text-align: center;
-}
 
+/* CSS Selector: Universal Selector */
+/* CSS Reset */
+/* =========================================
+   1. RESET & GLOBALES
+   ========================================= */
+/* * { */
+    /* Elimina márgenes externos por defecto del navegador */
+    /* margin: 0;       */
+    /* Elimina rellenos internos por defecto del navegador */        
+    /* padding: auto; */
+    /* Hace que el ancho/alto incluya el padding y el borde */             
+    /* box-sizing: border-box;  */
+/* } */
 
 
 h6{
     color:red2;
 }
+
+/* =========================================
+   2. NAVEGACIÓN (NAVBAR)
+   ========================================= */
 nav ul {
     list-style-type: none; /* Quita los puntos de la lista */
     padding: 0; /* Elimina el espacio interno que el navegador trae por defecto */
