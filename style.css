@@ -1,3 +1,24 @@
+/* +------------------------------------------------------------------------+
+|                                                                           |
+|   PROJECT:   dleonva.github.io                                            |
+|   DESC:      Personal Research & Knowledge Hub                            |
+|                                                                           |
+|   AUTHOR:    David LV                                                     |
+|   DATE:      2026                                                 |
+|   VERSION:   1.0 (Beta)                                                   |
+|                                                                           |
+|   "Handcrafted with semantic HTML & vanilla CSS."                         |
+|                                                                           |
++---------------------------------------------------------------------------+
+*/
+
+
+/* ==========================================================================
+   1. SELECTORES DE TIPO (BASE Y TIPOGRAFÍA)
+   TYPE SELECTORS
+   Estilos generales para etiquetas HTML puras.
+   ========================================================================== */
+
 html {
     /* background-color: #FAFAFA; */
     /* background-color: #F4F4F4; */
@@ -19,35 +40,26 @@ h1 {
     color:rebeccapurple
 }
 
-
-/* CSS Selectors */
-/* CSS Selector: Type Selector*/
 h2 {
     color:red;
 }
 
-img{
-    width: 50%;
+h6{
+    color:red;
 }
 
-/* CSS Selector: Class Selector */
+/* ==========================================================================
+   2. SELECTORES DE CLASE (COMPONENTES REUTILIZABLES)
+   CLASS SELECTORS
+   Clases específicas para dar estilo a grupos de elementos.
+   ========================================================================== */
+
 .class_verde{
     color:green;
     font-size: 44px;
 }
 
-/* CSS Selector: ID Selector */
-/* =========================================
-   1. ID SELECTORS
-   ========================================= */
-#id_azul{
-    color:blue;
-}
-#id_css_logo{
-    display: block;
-    width: 17%;
-}
-
+/* Componente: Enlaces a MDN */
 .class_mdn_link{
     color:rebeccapurple;
     font-weight: bold;
@@ -71,7 +83,6 @@ img{
     display: inline-block;
 }
 
-
 /* Efecto al pasar el mouse por el enlace */
 .class_mdn_link:hover{
     text-decoration: underline;
@@ -81,15 +92,41 @@ img{
 
 
 
+/* ==========================================================================
+   3. SELECTORES DE ID (ELEMENTOS ÚNICOS)
+   ID SELECTORS
+   Estilos de alta especificidad para elementos singulares.
+   ========================================================================== */
 
-/* CSS Selector: Attribute Selector */
-p[draggable="false"] {
-    color: yellow;
-    font-weight: bold;
+
+#id_azul{
+    color:blue;
+}
+
+/* Logo principal de CSS */
+#id_css_logo{
+    display: block;
+    width: 100px;
 }
 
 
-/* CSS Selector: Universal Selector */
+
+/* ==========================================================================
+   6. SELECTORES DE ATRIBUTO (COMPORTAMIENTO)
+   ATTRIBUTE SELECTORS
+   Estilos basados en propiedades de la etiqueta.
+   ========================================================================== */
+
+
+
+
+/* ==========================================================================
+   5. SELECTOR UNIVERSAL (RESET)
+   UNIVERSAL SELECTORS
+   El cimiento de la casa. Limpia los estilos del navegador.
+   ========================================================================== */
+
+
 /* CSS Reset */
 /* =========================================
    1. RESET & GLOBALES
@@ -104,9 +141,11 @@ p[draggable="false"] {
 /* } */
 
 
-h6{
-    color:red2;
-}
+
+/* ==========================================================================
+   3. LAYOUT Y NAVEGACIÓN (COMBINACIÓN DE SELECTORES)
+   Estructura del menú principal.
+   ========================================================================== */
 
 /* =========================================
    2. NAVEGACIÓN (NAVBAR)
