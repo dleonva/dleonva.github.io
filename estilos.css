@@ -1,56 +1,127 @@
+/* +------------------------------------------------------------------------+
+|                                                                           |
+|   PROJECT:   dleonva.github.io                                            |
+|   DESC:      Personal Research & Knowledge Hub                            |
+|                                                                           |
+|   AUTHOR:    David LV                                                     |
+|   DATE:      2026                                                         |
+|   VERSION:   1.0 (Beta)                                                   |
+|                                                                           |
+|   "Handcrafted with semantic HTML & vanilla CSS."                         |
+|                                                                           |
++---------------------------------------------------------------------------+
+*/
+
+/* ==========================================================================
+   1. SELECTORES DE TIPO (BASE Y TIPOGRAFÍA)
+   TYPE SELECTORS
+   Estilos generales para etiquetas HTML puras.
+   ========================================================================== */
+
 html {
-    background: #C0C0C0;
+    /* background-color: #C0C0C0; */
+    /* Color pergamino/marfil muy suave, no cansa la vista */
+    background-color: #FDFBF7;
+    /* Fondo gris carbón muy oscuro */
+    /* background-color: #121212; */
+
+
+
+    /* Texto gris oscuro casi negro, mejor contraste que el negro puro */
+    color: #2C2C2C;
+    /* Texto gris claro, evita el deslumbramiento */
+    /* color: #D4D4D4; */
+    /* Tipografía clásica de libro impreso */
+    font-family: "Georgia", "Times New Roman", serif;
+    /* Interlineado cómodo para leer */
+    line-height: 1.6;
 }
+
 h1 {
-    color:rebeccapurple
+    color: rebeccapurple;
 }
 
-
-/* CSS Selectors */
-/* CSS Selector: Element Selector*/
 h2 {
-    color:red;
+    color: red;
 }
 
-img{
-    width: 50%;
+h6 {
+    color: red; 
 }
 
-/* CSS Selector: Class Selector */
-.class_verde{
-    color:green;
-    font-size: 44px;
+img {
+    width: 33%;
 }
 
-/* CSS Selector: ID Selector */
-#id_azul{
-    color:blue;
-}
-#id_css_logo{
-    text-align:left;
+/* =========================================
+   LISTAS Y ENLACES (CONTENIDO)
+   ========================================= */
+
+ol {
+margin-left: 40px;
+margin-bottom: 40px;
 }
 
-/* CSS Selector: Attribute Selector */
-p[draggable="false"] {
-    color: yellow;
-    font-weight: bold;
+li {
+margin-bottom: 10px;
 }
 
-/* CSS Selector: Universal Selector */
-* {
-    font-style: italic;
+footer {
     text-align: center;
+    padding: 20px;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    color:#999;
 }
 
 
+/* ==========================================================================
+   2. SELECTORES DE CLASE (COMPONENTES REUTILIZABLES)
+   CLASS SELECTORS
+   Clases específicas para dar estilo a grupos de elementos.
+   ========================================================================== */
 
-h6{
-    color:red2;
-}
+
+/* ==========================================================================
+   3. SELECTORES DE ID (ELEMENTOS ÚNICOS)
+   ID SELECTORS
+   Estilos de alta especificidad para elementos singulares.
+   ========================================================================== */
+
+
+
+/* ==========================================================================
+   4. SELECTORES DE ATRIBUTO (COMPORTAMIENTO)
+   ATTRIBUTE SELECTORS
+   Estilos basados en propiedades de la etiqueta.
+   ========================================================================== */
+
+
+/* ==========================================================================
+   5. SELECTOR UNIVERSAL (RESET)
+   UNIVERSAL SELECTORS
+   El cimiento de la casa. Limpia los estilos del navegador.
+   ========================================================================== */
+
+
+   /* =========================================
+   1. RESET & VARIABLES GLOBALES
+   ========================================= */
+
+   * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+   }
+
+/* ==========================================================================
+   6. LAYOUT Y NAVEGACIÓN (COMBINACIÓN DE SELECTORES)
+   Estructura del menú principal.
+   ========================================================================== */
+
 nav ul {
     list-style-type: none; /* Quita los puntos de la lista */
     padding: 0; /* Elimina el espacio interno que el navegador trae por defecto */
-    margin:0; /* Elimina el espacio interno  del margen que el navegador trae por defecto */
+    margin: 0; /* Elimina el espacio interno del margen que el navegador trae por defecto */
     display: flex; /* Pone los elementos uno al lado del otro */
     gap: 20px; /* Espacio entre cada enlace */
     background-color: #f4f4f4; /* Un gris suave de fondo */
@@ -58,13 +129,23 @@ nav ul {
 }
 
 nav a {
-    /* Quita el subrayado azul */
     text-decoration: none; /* Quita el subrayado azul que traen los enlaces por defecto */
     color: rebeccapurple; /* Aplica el color púrpura en honor a Rebecca Meyer */
     font-weight: bold; /* Pone el texto en negrita (le da más "peso" visual) */
 }
 
 nav a:hover {
-    color:#000; /* Cambia a negro cuando pasas el mouse por encima */ 
+    color: #000; /* Cambia a negro cuando pasas el mouse por encima */ 
     text-decoration: underline; /* Vuelve a poner el subrayado solo cuando el mouse está encima */
+}
+
+/* =========================================
+   2. LAYOUT PRINCIPAL (CONTENEDOR)
+   ========================================= */
+main {
+    /* Limita el ancho para que los renglones no sean infinitos */
+    max-width: 800px;
+    /* Centra el bloque de texto en la pantalla */
+    margin: 0 auto;
+    padding: 40px 20px;
 }
