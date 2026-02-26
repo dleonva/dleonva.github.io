@@ -22,6 +22,12 @@ html {
     /* background-color: #C0C0C0; */
     /* Color pergamino/marfil muy suave, no cansa la vista */
     background-color: #FDFBF7;
+    /* Estándar Sepia: Es el tono clásico de papel envejecido. */
+    background-color: #F4ECD8;
+    /* Gris Cálido / Marfil Oscuro: Menos amarillo que el sepia. */
+    background-color: #EFEAE1;
+    /* Pergamino Denso: Más oscuro y terroso. */
+    background-color: #E5DFD3;
     /* Fondo gris carbón muy oscuro */
     /* background-color: #121212; */
 
@@ -65,6 +71,9 @@ margin-bottom: 40px;
 li {
 margin-bottom: 10px;
 }
+
+
+
 
 footer {
     text-align: center;
@@ -118,26 +127,37 @@ footer {
    Estructura del menú principal.
    ========================================================================== */
 
+
 nav ul {
+    /* Elimina los puntos (viñetas) predeterminados de la lista HTML */
     list-style-type: none; /* Quita los puntos de la lista */
     padding: 0; /* Elimina el espacio interno que el navegador trae por defecto */
     margin: 0; /* Elimina el espacio interno del margen que el navegador trae por defecto */
     display: flex; /* Pone los elementos uno al lado del otro */
-    gap: 20px; /* Espacio entre cada enlace */
+    gap: 30px; /* Espacio entre cada enlace */
     background-color: #f4f4f4; /* Un gris suave de fondo */
     padding: 10px;
+    justify-content: center;
 }
 
 nav a {
     text-decoration: none; /* Quita el subrayado azul que traen los enlaces por defecto */
     color: rebeccapurple; /* Aplica el color púrpura en honor a Rebecca Meyer */
     font-weight: bold; /* Pone el texto en negrita (le da más "peso" visual) */
+    /* Pinta el texto de los enlaces del mismo gris carbón que el texto principal */
+    color: #2C2C2C;
+    font-variant: small-caps;
 }
 
 nav a:hover {
     color: #000; /* Cambia a negro cuando pasas el mouse por encima */ 
     text-decoration: underline; /* Vuelve a poner el subrayado solo cuando el mouse está encima */
 }
+
+
+
+
+
 
 /* =========================================
    2. LAYOUT PRINCIPAL (CONTENEDOR)
