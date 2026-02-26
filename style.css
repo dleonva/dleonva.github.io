@@ -27,25 +27,58 @@ html {
     /* Un crema muy sutil */
     /* background-color: #FDFBF7; */
     /* "Cool Gray" (Gris Frío) */
+
+    /* Aplica el color de fondo usando la variable */
     background-color: #F5F7FA;
+    /* Define la tipografía del sistema */
+    font-family: system-ui, -apple-system, sans-serif;
+    /* Define la altura de línea para mejor legibilidad */
+    line-height: 1.6;
+    /* Aplica el color de texto base */
+    color: #334155;
 
 }
 
 body {
     /* Gris oscuro, mejor que el negro puro */
-    color: #333333;            
+    color: #333333;      
+    /* Añade espacio interno (arriba/abajo y lados) */
+    padding: 2rem 1rem;  
+    /* Limita el ancho total de la página */
+    max-width: 800px;
+    /* Centra el bloque del body horizontalmente */
+    margin: 0 auto;
 }
 
 h1 {
-    color:rebeccapurple
+    color:rebeccapurple;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
 }
 
 h2 {
     color:red;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 h6{
     color:red;
+}
+
+hr{
+    border: 0;
+    border-top: 1px solid #e2e8f0;
+    margin: 1.5rem 0;
+}
+
+footer {
+    /* Margen superior amplio para separar del contenido */
+    margin-top: 5rem;
+    /* Espacio interno inferior */
+    padding: 2rem;
+    /* Centra el texto */
+    text-align: center;
 }
 
 /* ==========================================================================
@@ -53,6 +86,17 @@ h6{
    CLASS SELECTORS
    Clases específicas para dar estilo a grupos de elementos.
    ========================================================================== */
+
+/* Estilos para el párrafo introductorio debajo del título principal */
+.class_intro_text {
+/* Color gris medio para que no compita visualmente con el título */
+    color: #64748B;
+    /* Tamaño de fuente un poco más grande de lo normal */
+    font-size: 1.1rem;
+    /* Espacio inferior para separar del contenido */
+    margin-bottom: 2rem;
+
+}
 
 .class_verde{
     color:green;
@@ -89,6 +133,48 @@ h6{
     /* Un fondo sutil al interactuar */
     background-color:#f0f0f0;
 }
+
+/* Estilos para cada bloque de categoría de investigación */
+.class_categoria {
+    /* Espacio inferior para separar una categoría de otra */
+    margin-bottom: 3.5rem;
+}
+
+.class_proximamente {
+    font-style: italic;
+    color: #94A3B8;
+    font-size: 0.9rem;
+}
+
+/* Estilo para los enlaces externos y de archivos */
+.class_resource_link{
+    /* Quita el subrayado inicial */
+    text-decoration: none;
+    /* Peso de fuente medio */
+    font-weight: 500;
+    /* Transicion suave para el color */
+    transition: color 0.2s;
+
+}
+
+/* Añade un icono visual (flecha) después de los enlaces para indicar salida */
+.class_resource_link::after {
+    /* Carácter Unicode de flecha pequeña */
+    content: "\2197";
+    /* Tamaño reducido respecto al texto */
+    font-size: 0.75em;
+    /* Posición superior tipo potencia */
+    vertical-align: super;
+    /* Color gris tenue para que no distraiga */
+    color: #94A3B8;
+    /* Margen pequeño respecto al texto anterior */
+    margin-left: 4px;
+
+
+}
+
+
+
 
 
 
@@ -131,14 +217,15 @@ h6{
 /* =========================================
    1. RESET & GLOBALES
    ========================================= */
-/* * { */
+* {
     /* Elimina márgenes externos por defecto del navegador */
-    /* margin: 0;       */
+    margin: 0;      
     /* Elimina rellenos internos por defecto del navegador */        
-    /* padding: auto; */
-    /* Hace que el ancho/alto incluya el padding y el borde */             
-    /* box-sizing: border-box;  */
-/* } */
+    padding: 0;
+    /* Hace que el ancho/alto incluya el padding y el borde */
+    /* Incluye bordes y rellenos en el cálculo del ancho */           
+    box-sizing: border-box; 
+}
 
 
 
@@ -150,24 +237,28 @@ h6{
 /* =========================================
    2. NAVEGACIÓN (NAVBAR)
    ========================================= */
-nav ul {
-    list-style-type: none; /* Quita los puntos de la lista */
-    padding: 0; /* Elimina el espacio interno que el navegador trae por defecto */
+header nav ul {
+    /* Quita los puntos de la lista */
+    list-style-type: none; 
+    /* Elimina el espacio interno que el navegador trae por defecto */
+    padding: 1rem 0; 
     margin:0; /* Elimina el espacio interno  del margen que el navegador trae por defecto */
     display: flex; /* Pone los elementos uno al lado del otro */
-    gap: 20px; /* Espacio entre cada enlace */
+    gap: 1.5rem; /* Espacio entre cada enlace */
     background-color: #f4f4f4; /* Un gris suave de fondo */
     padding: 10px;
+    justify-content: center;
 }
 
-nav a {
+header nav a {
     /* Quita el subrayado azul */
-    text-decoration: none; /* Quita el subrayado azul que traen los enlaces por defecto */
+    /* Quita el subrayado azul que traen los enlaces por defecto */
+    text-decoration: none; 
     color: rebeccapurple; /* Aplica el color púrpura en honor a Rebecca Meyer */
     font-weight: bold; /* Pone el texto en negrita (le da más "peso" visual) */
 }
 
-nav a:hover {
+header nav a:hover {
     color:#000; /* Cambia a negro cuando pasas el mouse por encima */ 
     text-decoration: underline; /* Vuelve a poner el subrayado solo cuando el mouse está encima */
 }
