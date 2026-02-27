@@ -18,6 +18,12 @@
    Estilos generales para etiquetas HTML puras.
    ========================================================================== */
 
+:root{
+    /* Definición de variables globales para colores */
+    /* Dorado oscuro para detalles y bordes */
+    --medieval-gold: #b8860b;
+}
+
 html {
     /* background-color: #C0C0C0; */
     /* Color pergamino/marfil muy suave, no cansa la vista */
@@ -38,22 +44,46 @@ html {
     /* Texto gris claro, evita el deslumbramiento */
     /* color: #D4D4D4; */
     /* Tipografía clásica de libro impreso */
-    font-family: "Georgia", "Times New Roman", serif;
+    /* Fuente principal de tipo serif */
+    font-family: "Crimson Text", "Times New Roman", serif;
     /* Interlineado cómodo para leer */
     line-height: 1.6;
+    /* Mejora la nitidez de la fuente en macOS/iOS */
+    -webkit-font-smoothing: antialiased;
 }
+
+header {
+    /* Estilos para el encabezado superior */
+    /* Negro carbón para la barra de navegación */
+    background-color: #1A1A1A;
+    /* Espaciado vertical interno */
+    padding: 1rem 0;
+    /* Fija el menú al hacer scroll */
+    position: sticky;
+    /* Posición en el borde superior */
+    top: 0;
+    /* Asegura que esté por encima de otros elementos */
+    z-index: 100;
+    /* Línea dorada inferior */
+    border-bottom: 3px solid var(--medieval-gold);
+    /* Sombra suave */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
+}
+
 
 h1 {
     color: rebeccapurple;
+    /* Fuente clásica romana */
+    font-family: 'Cinzel', serif;
 }
 
 h2 {
     color: red;
+    background-color: silver;
 }
 
-h6 {
-    color: red; 
-}
+
 
 img {
     width: 33%;
@@ -76,10 +106,17 @@ margin-bottom: 10px;
 
 
 footer {
+    /* Espacio antes del footer */
+    margin-top: 5rem;
+    /* Centrado */
     text-align: center;
-    padding: 20px;
+    /* Espaciado interno */
+    padding: 3rem 1rem;
     font-family: "Helvetica Neue", Arial, sans-serif;
-    color:#999;
+    font-size: 1.2rem;
+    /* Texto gris claro */
+    color: #aaa;
+    background-color: #1A1A1A;
 }
 
 
@@ -117,8 +154,11 @@ footer {
    ========================================= */
 
    * {
+    /* Elimina margen por defecto */
     margin: 0;
+    /* Elimina relleno por defecto */
     padding: 0;
+    /* Incluye bordes y rellenos en el cálculo del tamaño */
     box-sizing: border-box;
    }
 
@@ -130,27 +170,42 @@ footer {
 
 nav ul {
     /* Elimina los puntos (viñetas) predeterminados de la lista HTML */
-    list-style-type: none; /* Quita los puntos de la lista */
-    padding: 0; /* Elimina el espacio interno que el navegador trae por defecto */
-    margin: 0; /* Elimina el espacio interno del margen que el navegador trae por defecto */
-    display: flex; /* Pone los elementos uno al lado del otro */
-    gap: 30px; /* Espacio entre cada enlace */
-    background-color: #f4f4f4; /* Un gris suave de fondo */
+     /* Quita los puntos de la lista */
+    list-style: none;
+    /* Pone los elementos uno al lado del otro */
+    display: flex; 
+    /* Espacio entre cada enlace */
+    gap: 2.5rem;
     padding: 10px;
+    /* Centra los elementos horizontalmente */
     justify-content: center;
 }
 
 nav a {
-    text-decoration: none; /* Quita el subrayado azul que traen los enlaces por defecto */
-    color: rebeccapurple; /* Aplica el color púrpura en honor a Rebecca Meyer */
-    font-weight: bold; /* Pone el texto en negrita (le da más "peso" visual) */
+    /* Quita el subrayado azul que traen los enlaces por defecto */
+    text-decoration: none; 
+    /* Aplica el color púrpura en honor a Rebecca Meyer */
+    /* Color gris claro */
+    color: #E0E0E0; 
+    /* Pone el texto en negrita (le da más "peso" visual) */
+    font-weight: bold; 
+    /* Fuente clásica legible */
+    font-family: 'Cinzel', serif;
+    /* Tamaño reducido */
+    font-size: 0.85rem;
+    /* Convierte a mayúsculas */
+    text-transform: uppercase;
+    /* Separación entre letras */
+    letter-spacing: 2px;
     /* Pinta el texto de los enlaces del mismo gris carbón que el texto principal */
-    color: #2C2C2C;
-    font-variant: small-caps;
+    /* color: #2C2C2C; */
+    /* font-variant: small-caps; */
+    /* Suaviza el cambio de color al pasar el mouse */
+    transition: color 0.3s ease;
 }
 
 nav a:hover {
-    color: #000; /* Cambia a negro cuando pasas el mouse por encima */ 
+    color: var(--medieval-gold); /* Cambia a negro cuando pasas el mouse por encima */ 
     text-decoration: underline; /* Vuelve a poner el subrayado solo cuando el mouse está encima */
 }
 
