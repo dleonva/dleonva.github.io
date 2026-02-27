@@ -22,6 +22,7 @@
     /* Definición de variables globales para colores */
     /* Dorado oscuro para detalles y bordes */
     --medieval-gold: #b8860b;
+    --medieval-red: #8b0000;
 }
 
 html {
@@ -57,7 +58,7 @@ header {
     /* Negro carbón para la barra de navegación */
     background-color: #1A1A1A;
     /* Espaciado vertical interno */
-    padding: 1rem 0;
+    padding: 0;
     /* Fija el menú al hacer scroll */
     position: sticky;
     /* Posición en el borde superior */
@@ -73,15 +74,60 @@ header {
 
 
 h1 {
+    /* Estilo del título principal de la página */
     color: rebeccapurple;
     /* Fuente clásica romana */
+    /* Fuente romana solemne */
     font-family: 'Cinzel', serif;
+    /* Color carmesí */
+    color: var(--medieval-red);
+    /* Centra el título principal */
+    text-align: center;
+    /* Tamaño destacado */
+    font-size: 2.5rem;
+    /* Espacio inferior */
+    margin-bottom: 2.5rem;
+    /* Doble línea decorativa dorada */
+    border-bottom: 2px double var(--medieval-gold);
+    /* Espacio entre el texto y la línea */
+    padding-bottom: 1rem;
+
+
+
 }
 
 h2 {
-    color: red;
-    background-color: silver;
+    /* Estilo de los encabezados de sección */
+    /* Fuente romana solemne */
+    font-family: 'Cinzel', serif;
+    /* Color carmesí */
+    color: var(--medieval-red);
+    /* Tamaño de sección */
+    font-size: 1.8rem;
+    /* Márgenes superior e inferior */
+    margin: 2rem 0 1.5rem;
+    /* Alineación flexible para la línea decorativa */
+    display: flex;
+    /* Centra la línea con el texto */
+    align-items: center;
+    /* Espacio entre el título y la línea */
+    gap: 1rem;
+
 }
+
+h3{
+    /* Estilo para títulos secundarios o en latín */
+    /* Texto en cursiva */
+    font-style: italic;
+    font-size: 1.5rem;
+    color: var(--medieval-gold);
+    /* Peso de fuente semi-negrita */
+    font-weight: 600;
+    /* Margen inferior */
+    margin-bottom: 1rem;
+
+}
+
 
 
 
