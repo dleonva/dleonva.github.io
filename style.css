@@ -66,6 +66,17 @@ h6{
     color:red;
 }
 
+ul {
+    /* Quita los puntos redondos clásicos */
+    list-style: none;
+    /* Añade un poco de margen superior */
+    margin-top: 1rem;
+}
+
+ol {
+    padding: 2rem;
+}
+
 hr{
     border: 0;
     border-top: 1px solid #e2e8f0;
