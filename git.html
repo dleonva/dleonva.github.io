@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>git</title>
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/e/e0/Git-logo.svg" type="image/svg+xml">
+</head>
+
+
+
+<body>
+
+    
+    
+    
+    <header>
+        <hr>
+        <nav>
+                <a href="./index.html">home</a> |
+                <a href="./research.html">research</a> |
+                <a href="./bibliography.html">bibliography</a>
+        </nav>
+        <hr>
+    </header>
+    
+    
+    
+    
+    <main>
+
+        <h1>Git: Flujo de Trabajo Profesional</h1>
+
+        <p>
+            Guía de referencia paso a paso para el control de versiones local y sincronización con GitHub desde Visual Studio Code.
+        </p>
+
+        
+        <section>
+            <hr>
+            <h2>1. Modificar (Working Directory)</h2>
+            <p>Realizar y guardar los cambios en los archivos locales.</p>
+            <ul>
+                <li>Abre el archivo en Visual Studio Code (ej. <code>.html</code> o <code>.css</code>).</li>
+                <li>Realiza las modificaciones necesarias en el código.</li>
+                <li>Guarda el archivo (<code>Cmd + S</code>).</li>
+                <li><em>Nota:</em> En la barra lateral izquierda, el ícono de "Control de código fuente" mostrará una notificación azul indicando que Git detectó modificaciones.</li>
+            </ul>
+        </section>
+
+
+        <section>
+            <hr>
+            <h2>2. Preparar los cambios (Staging Area)</h2>
+            <p>Seleccionar explícitamente qué archivos modificados se incluirán en la próxima actualización.</p>
+            <ul>
+                <li><strong>Vía VS Code (Interfaz):</strong> Ve a la pestaña de Control de código fuente. En la lista "Cambios", pasa el cursor sobre el archivo y haz clic en el ícono <strong>(+)</strong> para pasarlo a "Cambios almacenados".</li>
+                <li><strong>Vía Terminal:</strong> Ejecuta el siguiente comando para agregar todos los archivos modificados:
+                <br><br>
+                <code>git add .</code>
+                </li>
+                <br><br>
+                <li><em>Nota:</em> (El punto <code>.</code> significa "agrega todos los archivos modificados").</li>
+            </ul>
+        </section>
+
+
+        <section>
+            <hr>
+            <h2>3. Confirmar (Commit)</h2>
+            <p>Empaquetar los archivos preparados y asignarles un mensaje descriptivo en el historial local.</p>
+            <ul>
+                <li><strong>Vía VS Code (Interfaz):</strong> En la caja de texto de la pestaña de Control de código fuente, escribe un mensaje descriptivo (ej. "Agrega sección de Git") y haz clic en el botón <strong>Commit</strong>.</li>
+                <li><strong>Vía Terminal:</strong> Ejecuta el comando con tu mensaje entre comillas:
+                    <br><br>
+                    <code>git commit -m "Mensaje descriptivo del cambio"</code>
+                </li>
+            </ul>
+        </section>
+
+
+        <section>
+            <hr>
+            <h2>4. Enviar a Producción (Push)</h2>
+            <p>Subir el historial de cambios confirmados desde la computadora local al repositorio remoto en GitHub.</p>
+            <ul>
+                <li><strong>Vía VS Code (Interfaz):</strong> Haz clic en el botón <strong>Sync Changes</strong> (Sincronizar cambios) que aparece después de hacer el commit.</li>
+                <li><strong>Vía Terminal:</strong> Ejecuta el comando para empujar los cambios a la rama principal:
+                    <br><br>
+                    <code>git push</code>
+                </li>
+            </ul>
+        </section>
+
+
+
+
+    </main>
+
+    <footer>
+        <hr>
+        <h6> Handcrafted by David LV. 2026</h6>
+     </footer>
+
+</body>
+
+
+
+
+</html>
