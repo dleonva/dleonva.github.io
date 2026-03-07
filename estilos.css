@@ -188,6 +188,7 @@ footer {
     outline: 1px solid var(--border-color);
     /* Sombra para dar efecto de relieve */
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border-width: 8px 16px 32px 64px;
    }
 
    .class_image_caption {
