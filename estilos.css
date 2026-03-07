@@ -23,6 +23,8 @@
     /* Dorado oscuro para detalles y bordes */
     --medieval-gold: #b8860b;
     --medieval-red: #8b0000;
+    /* Marrón claro para líneas divisorias suaves */
+    --border-color: #d2b48c;
 }
 
 html {
@@ -75,7 +77,6 @@ header {
 
 h1 {
     /* Estilo del título principal de la página */
-    color: rebeccapurple;
     /* Fuente clásica romana */
     /* Fuente romana solemne */
     font-family: 'Cinzel', serif;
@@ -131,10 +132,6 @@ h3{
 
 
 
-img {
-    width: 33%;
-}
-
 /* =========================================
    LISTAS Y ENLACES (CONTENIDO)
    ========================================= */
@@ -153,11 +150,11 @@ margin-bottom: 10px;
 
 footer {
     /* Espacio antes del footer */
-    margin-top: 5rem;
+    margin-top: 7rem;
     /* Centrado */
     text-align: center;
     /* Espaciado interno */
-    padding: 3rem 1rem;
+    padding: 1rem 1rem;
     font-family: "Helvetica Neue", Arial, sans-serif;
     font-size: 1.2rem;
     /* Texto gris claro */
@@ -172,6 +169,50 @@ footer {
    Clases específicas para dar estilo a grupos de elementos.
    ========================================================================== */
 
+   .class_image_container {/* Contenedor para la imagen de David */
+    /* Márgenes verticales amplios */
+    margin: 3rem 0;
+    /* Centra la imagen y su descripción */
+    text-align: center;
+   }
+
+   .class_image_container img{
+    /* Estilo de la imagen */
+    /* Asegura que la imagen no se salga del contenedor */
+    max-width: 100%;
+    /* Mantiene la proporción original */
+    height: auto;
+    /* Marco blanco tipo cuadro */
+    border: 10px solid white;
+    /* Línea exterior fina de acabado */
+    outline: 1px solid var(--border-color);
+    /* Sombra para dar efecto de relieve */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+   }
+
+   .class_image_caption {
+    /* Estilos para la descripción debajo de la imagen */
+    /* Tamaño de fuente pequeño */
+    font-size: 0.9rem;
+    /* Espacio entre la descripción y la imagen */
+    margin-top: 0.8rem;
+    /* Texto en cursiva para estilo editorial */
+    font-style: italic;
+    /* Color gris para separar de la importancia del texto principal */
+    color: grey;
+   }
+
+.class_image_caption a {
+    /* Enlace de detalle dentro del pie de foto */
+    /* Color rojo para resaltar el enlace */
+    color: var(--medieval-red);
+    /* Sin subrayado decorativo */
+    text-decoration: none;
+    /* Peso de fuente ligeramente mayor */
+    font-weight: 600;
+
+
+}
 
 /* ==========================================================================
    3. SELECTORES DE ID (ELEMENTOS ÚNICOS)
