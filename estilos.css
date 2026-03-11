@@ -216,17 +216,21 @@ footer {
     color: grey;
    }
 
-.class_image_caption a {
-    /* Enlace de detalle dentro del pie de foto */
-    /* Color rojo para resaltar el enlace */
-    color: var(--medieval-red);
-    /* Sin subrayado decorativo */
-    text-decoration: none;
-    /* Peso de fuente ligeramente mayor */
-    font-weight: 600;
+    .class_image_caption a {
+        /* Enlace de detalle dentro del pie de foto */
+        /* Color rojo para resaltar el enlace */
+        color: var(--medieval-red);
+        /* Sin subrayado decorativo */
+        text-decoration: none;
+        /* Peso de fuente ligeramente mayor */
+        font-weight: 600;
 
+    }
 
-}
+    .simple-table td {
+        padding: 1.5rem;
+
+    }
 
 /* ==========================================================================
    3. SELECTORES DE ID (ELEMENTOS ÚNICOS)
