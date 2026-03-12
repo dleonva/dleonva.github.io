@@ -175,6 +175,11 @@ footer {
     background-color: #1A1A1A;
 }
 
+footer a {
+    /* Estilo para el nombre del autor en el pie de página */
+    color: #b8860b;
+    text-decoration: none;
+}
 
 /* ==========================================================================
    2. SELECTORES DE CLASE (COMPONENTES REUTILIZABLES)

@@ -92,6 +92,11 @@ footer {
     text-align: center;
 }
 
+footer strong {
+    /* Estilo para el nombre del autor en el pie de página */
+    color: #b8860b;
+}
+
 /* ==========================================================================
    2. SELECTORES DE CLASE (COMPONENTES REUTILIZABLES)
    CLASS SELECTORS
