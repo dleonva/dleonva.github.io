@@ -14,9 +14,54 @@
 
 
 /* ==========================================================================
-   1. SELECTORES DE TIPO (BASE Y TIPOGRAFÍA)
+   1. SELECTOR UNIVERSAL (RESET) (La base de la cascada)
+   UNIVERSAL SELECTORS
+   El cimiento de la casa. Limpia los estilos del navegador.
+   Se declaran primero para limpiar estilos por defecto del navegador.
+   ========================================================================== */
+
+
+/* CSS Reset */
+/* =========================================
+   1. RESET & GLOBALES
+   ========================================= */
+   /* Selector Universal (*): Selecciona absolutamente todos los elementos del DOM. */
+
+* {
+    /* Elimina el margen externo que los navegadores añaden por defecto */
+    margin: 0;      
+    /* Elimina rellenos internos por defecto del navegador */        
+    padding: 0;
+    /* Hace que el ancho/alto incluya el padding y el borde */
+    /* Incluye bordes y rellenos en el cálculo del ancho */           
+    box-sizing: border-box; 
+}
+
+
+
+/* ==========================================================================
+    2. VARIABLES 
+    Se declaran para establecer los valores globales que se usarán 
+    en todo el documento.
+    ========================================================================== */
+
+
+/* Pseudo-clase :root representa el elemento <html>. Es el mejor lugar para variables CSS globales. */
+:root {
+    /* Definimos variables personalizadas (custom properties) para reutilizar colores y valores. */
+    /* Si quieres cambiar un color, lo haces aquí y cambiará en toda la página. */
+    --color-fondo: #F5F7FA ;
+    --color-texto: #334155;
+    --color-primario: rebeccapurple;
+    --color-borde: #e2e8f0;
+    --color-enlace-hover: #000000;
+}
+
+/* ==========================================================================
+   3. SELECTORES DE TIPO / ELEMENTOS BASE (Reglas generales)
    TYPE SELECTORS
    Estilos generales para etiquetas HTML puras.
+   Estilos aplicados directamente a las etiquetas HTML (html, body, h1, p, etc.).
    ========================================================================== */
 
 html {
@@ -29,7 +74,7 @@ html {
     /* "Cool Gray" (Gris Frío) */
 
     /* Aplica el color de fondo usando la variable */
-    background-color: #F5F7FA;
+    background-color: var(--color-fondo);
     /* Define la tipografía del sistema */
     font-family: system-ui, -apple-system, sans-serif;
     /* Define la altura de línea para mejor legibilidad */
@@ -50,6 +95,17 @@ body {
     margin: 0 auto;
 }
 
+header {
+    /* position: sticky hace que el contenedor se quede pegado al hacer scroll */
+    position: sticky;
+    /* Separamos un poco del borde superior para un efecto flotante real */
+    top: 1.5rem;
+    /* z-index: 1000 asegura que flote por encima del resto del contenido (eje Z / 3D) */
+    z-index: 1000;
+    /* Espaciado inferior para separar la cabecera del contenido principal */
+    margin-bottom: 3rem;
+}
+
 h1 {
     color:rebeccapurple;
     font-size: 2.5rem;
@@ -64,6 +120,11 @@ h2 {
 
 h6{
     color:red;
+}
+
+p{
+    /* Espaciado inferior para los párrafos */
+    margin-bottom: 1.5rem;
 }
 
 ul {
@@ -206,9 +267,13 @@ footer strong {
 }
 
 /* Logo principal de CSS */
-#id_css_logo{
+#id-css-logo{
+    /* display: block asegura que se comporte como un bloque (ocupa todo el ancho disponible) */
     display: block;
-    width: 100px;
+    /* Limita el ancho de la imagen */
+    width: 120px;
+    /* Centra la imagen (al ser display: block, margin auto funciona a los lados) */
+    margin: 1.5rem 0;
 }
 
 
@@ -222,26 +287,7 @@ footer strong {
 
 
 
-/* ==========================================================================
-   5. SELECTOR UNIVERSAL (RESET)
-   UNIVERSAL SELECTORS
-   El cimiento de la casa. Limpia los estilos del navegador.
-   ========================================================================== */
 
-
-/* CSS Reset */
-/* =========================================
-   1. RESET & GLOBALES
-   ========================================= */
-* {
-    /* Elimina márgenes externos por defecto del navegador */
-    margin: 0;      
-    /* Elimina rellenos internos por defecto del navegador */        
-    padding: 0;
-    /* Hace que el ancho/alto incluya el padding y el borde */
-    /* Incluye bordes y rellenos en el cálculo del ancho */           
-    box-sizing: border-box; 
-}
 
 
 
@@ -254,16 +300,24 @@ footer strong {
    2. NAVEGACIÓN (NAVBAR)
    ========================================= */
 header nav ul {
-    /* Quita los puntos de la lista */
+    /* Elimina los puntos por defecto de la lista */
     list-style-type: none; 
     /* Elimina el espacio interno que el navegador trae por defecto */
     padding: 1rem 0; 
     margin:0; /* Elimina el espacio interno  del margen que el navegador trae por defecto */
     display: flex; /* Pone los elementos uno al lado del otro */
-    gap: 1.5rem; /* Espacio entre cada enlace */
-    background-color: #f4f4f4; /* Un gris suave de fondo */
+    /* Añade un espacio exacto entre cada elemento de la lista */
+    gap: 1.5rem;
+    /* Color de fondo sutil para la barra de navegación */
+    background-color: #ffffff; /* Un gris suave de fondo */
     padding: 10px;
+    /* Centra los elementos horizontalmente */
     justify-content: center;
+    /* Bordes redondeados modernos */
+    border-radius: 8px;
+    /* Sombra suave para dar efecto de elevación (x y blur spread color) */
+    box-shadow: 0 2px 4px ;
+
 }
 
 header nav a {
