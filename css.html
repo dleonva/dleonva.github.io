@@ -45,14 +45,14 @@
 
             <section>
                 <h1>CSS: Cascading Style Sheets</h1>
-                <p><strong>CSS (Cascading Style Sheets o Hojas de Estilo en Cascada)</strong> es el lenguaje que determina cómo se ven los documentos HTML en pantalla. Mientras que HTML estructura el contenido de forma lógica, CSS controla el diseño visual: colores, tipografías, distribución espacial y la adaptabilidad a diferentes tamaños de dispositivos (diseño responsivo).</p>
+                <p><strong>CSS (Cascading Style Sheets u Hojas de Estilo en Cascada)</strong> es el lenguaje que determina cómo se ven los documentos HTML en pantalla. Mientras que HTML estructura el contenido de forma lógica, CSS controla el diseño visual: colores, tipografías, distribución espacial y la adaptabilidad a diferentes tamaños de dispositivos (diseño responsivo).</p>
                 <p><p>Se llama <em>"en cascada"</em> porque el navegador lee y aplica las reglas de diseño de arriba hacia abajo. Cuando hay conflictos (por ejemplo, dos reglas intentan cambiar el color del mismo texto), el motor de CSS decide cuál aplicar basándose en la "especificidad" (qué tan específica es la regla) y en la herencia de estilos de elementos padres a hijos.</p></p>
                 <h2>Documentación Oficial de CSS</h2>
                 <p>Índice de consulta rápida basado en los estándares de MDN Web Docs.</p>
                 
                 <a 
                 href="https://developer.mozilla.org/en-US/" 
-                class="class_mdn_link" 
+                class="external-link" 
                 target="_blank"
                 rel="noopener noreferrer"
                 >Mozilla Developer Network [MDN] Web Docs</a>
@@ -71,7 +71,7 @@
                     <li>Selector de Tipo:
                         <a 
                         href="https://developer.mozilla.org/en/docs/Web/CSS/Type_selectors" 
-                        class="class_mdn_link" 
+                        class="external-link" 
                         target="_blank"
                         rel="noopener noreferrer"
                         >Type Selectors (MDN)</a>
@@ -79,7 +79,7 @@
                     <li>Selector de Clase:
                         <a 
                         href="https://developer.mozilla.org/en/docs/Web/CSS/Class_selectors" 
-                        class="class_mdn_link" 
+                        class="external-link" 
                         target="_blank"
                         rel="noopener noreferrer"
                         >Class Selectors (MDN)</a>
@@ -87,7 +87,7 @@
                     <li>Selector de ID:
                         <a 
                         href="https://developer.mozilla.org/en/docs/Web/CSS/ID_selectors" 
-                        class="class_mdn_link" 
+                        class="external-link" 
                         target="_blank"
                         rel="noopener noreferrer"
                         >ID Selectors (MDN)</a>
@@ -95,7 +95,7 @@
                     <li>Selector de Atributo:
                         <a 
                         href="https://developer.mozilla.org/en/docs/Web/CSS/Attribute_selectors" 
-                        class="class_mdn_link" 
+                        class="external-link" 
                         target="_blank"
                         rel="noopener noreferrer"
                         >Attribute Selectors (MDN)</a>
@@ -103,7 +103,7 @@
                     <li>Selector Universal:
                         <a 
                         href="https://developer.mozilla.org/en/docs/Web/CSS/Universal_selectors" 
-                        class="class_mdn_link" 
+                        class="external-link" 
                         target="_blank"
                         rel="noopener noreferrer"
                         >Universal Selectors (MDN)</a>
@@ -117,14 +117,15 @@
 
             <section>
                 <h2>Jerarquía de Colores (Práctica de Selectores)</h2>
-                <p>Estos ejemplos demuestran cómo diferentes selectores afectan al mismo tipo de elemento:</p>
+                <p>Estos ejemplos demuestran cómo diferentes selectores afectan al mismo tipo de elemento por su especificidad.</p>
                 <p>Todos los siguientes elementos son <code>&lt;h2&gt;</code>:</p>
-                <h2>Red</h2>
-                <h2 class="class_verde">Green</h2>
-                <h2 id="id_azul">Blue</h2>
+                <h2>Red: (Toma color del Tag)</h2>
+                <h2 class="verde">Green: (Sobrescrito por Clase)</h2>
+                <h2 id="azul">Blue: (Sobrescrito por ID)</h2>
             </section>
 
             <section>
+                <hr>
                 <h2>Colores en CSS</h2>
                 <ul>
                     <li>
@@ -132,7 +133,7 @@
                         href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/named-color"
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="class_mdn_link"
+                        class="external-link"
                         >Named-Colors (MDN)</a>
                     </li>
                 </ul>

@@ -153,9 +153,14 @@ footer {
     text-align: center;
 }
 
-footer strong {
+footer strong a {
     /* Estilo para el nombre del autor en el pie de página */
     color: #b8860b;
+    text-decoration: none;
+}
+
+footer strong a:hover {
+text-decoration: underline;
 }
 
 /* ==========================================================================
@@ -175,13 +180,12 @@ footer strong {
 
 }
 
-.class_verde{
+.verde{
     color:green;
-    font-size: 44px;
 }
 
 /* Componente: Enlaces a MDN */
-.class_mdn_link{
+.external-link{
     color:rebeccapurple;
     font-weight: bold;
     /* Quitamos subrayado por defecto para limpieza */
@@ -189,7 +193,7 @@ footer strong {
 }
 
 /* Pseudo-elemento ::after SOLO para la clase .class_mdn_link */
-.class_mdn_link::after {
+.external-link::after {
     /* Código Unicode para la flecha (↗) más limpia */
     content: "\2197";
     /* La hacemos un 30% más pequeña que el texto */
@@ -205,7 +209,7 @@ footer strong {
 }
 
 /* Efecto al pasar el mouse por el enlace */
-.class_mdn_link:hover{
+.external-link:hover{
     text-decoration: underline;
     /* Un fondo sutil al interactuar */
     background-color:#f0f0f0;
@@ -262,8 +266,9 @@ footer strong {
    ========================================================================== */
 
 
-#id_azul{
+#azul{
     color:blue;
+    margin-bottom: 5rem;
 }
 
 /* Logo principal de CSS */
@@ -317,6 +322,15 @@ header nav ul {
     border-radius: 8px;
     /* Sombra suave para dar efecto de elevación (x y blur spread color) */
     box-shadow: 0 2px 4px ;
+    /* --- EFECTO GLASSMORPHISM (Cristal) PROFESIONAL --- */
+    /* Fondo blanco con mucha transparencia */
+    background-color: rgba(255, 255, 255, 0.5);
+    /* Desenfoca lo que hay detrás y satura los colores para un look premium */
+    backdrop-filter: blur(5px) saturate(180%);
+    /* Soporte Safari */
+    -webkit-backdrop-filter: blur(5px) saturate(180%);
+    /* Borde semitransparente para simular el borde del cristal iluminado */
+    border: 1px solid rgba(255, 255, 255, 0.6);
 
 }
 
