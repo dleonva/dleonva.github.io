@@ -118,10 +118,6 @@ h2 {
     margin-bottom: 1rem;
 }
 
-h6{
-    color:red;
-}
-
 p{
     /* Espaciado inferior para los párrafos */
     margin-bottom: 1.5rem;
@@ -151,6 +147,8 @@ footer {
     padding: 2rem;
     /* Centra el texto */
     text-align: center;
+    /* Gris más claro para restar importancia visual */
+    color: #64748b;
 }
 
 footer strong a {
