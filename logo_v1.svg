@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 250" width="250" height="250">
+
+  <rect x="6" y="6" width="238" height="238" rx="44" fill="none" stroke="#0000FF" stroke-width="13" />
+
+  <line x1="12" y1="125" x2="238" y2="125" stroke="#444" stroke-width="2" stroke-dasharray="8,6" stroke-dashoffset="3" />
+
+  <line x1="125" y1="12" x2="125" y2="238" stroke="#444" stroke-width="2" stroke-dasharray="8,6" stroke-dashoffset="3" />
+
+</svg>
+
+

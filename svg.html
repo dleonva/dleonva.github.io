@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG</title>
+    <!-- Favicon usando el logo oficial de SVG -->
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/0/02/SVG_logo.svg" type="image/svg+xml">
+    <style>
+        /* Estilos básicos para mantener la legibilidad */
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        h1, h2, h3 {
+            color: #111;
+        }
+        h2 {
+            margin-top: 40px;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-family: monospace;
+            color: #d63384;
+            font-size: 0.9em;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            border: 1px solid #ddd;
+        }
+        pre code {
+            background-color: transparent;
+            color: #333;
+            padding: 0;
+        }
+        .svg-preview {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+            padding: 20px;
+            background-color: #fafafa;
+            border-radius: 8px;
+            border: 1px dashed #ccc;
+        }
+        .concept-box {
+            background-color: #e9f5ff;
+            border-left: 4px solid #0066cc;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <hr>
+        <nav>
+                <a href="./index.html">home</a> |
+                <a href="./research.html">research</a> |
+                <a href="./bibliography.html">bibliography</a>
+        </nav>
+        <hr>
+    </header>
+
+    <main>
+
+        <h1>Guía Completa: SVG y Diseño Vectorial en la Web</h1>
+
+        <p>
+            Esta guía detalla los conceptos fundamentales detrás de los Gráficos Vectoriales Escalables (SVG: Scalable Vector Graphics), su relación con el lenguaje XML (Extensible Markup Language), cómo integrarlos en proyectos web y un desglose técnico línea por línea de un diseño geométrico.
+        </p>
+
+        <section>
+            <h2>1. Conceptos Fundamentales</h2>
+            
+            <h3>¿Qué significa SVG?</h3>
+            <p>
+                <strong>SVG</strong> significa <em>Scalable Vector Graphics</em> (Gráficos Vectoriales Escalables). Es un formato de imagen basado en texto que utiliza el lenguaje XML para describir imágenes bidimensionales mediante fórmulas matemáticas y geometría (líneas, curvas, polígonos, colores) en lugar de una cuadrícula de píxeles estática.
+            </p>
+            <div class="concept-box">
+                <strong>Vectores vs. Píxeles (Mapas de bits):</strong>
+                <p>Formatos tradicionales como JPG o PNG son <em>mapas de bits</em>. Si haces zoom sobre ellos, verás los cuadrados individuales (píxeles) y la imagen perderá calidad o se verá borrosa. Un <strong>vector (SVG)</strong> es una fórmula matemática. Si lo escalas al tamaño de un edificio, la computadora simplemente recalcula la fórmula, por lo que la imagen siempre será 100% nítida, sin importar su tamaño.</p>
+            </div>
+
+            <h3>¿Qué es XML y su diferencia con HTML?</h3>
+            <p>
+                <strong>XML</strong> (<em>eXtensible Markup Language</em> - Lenguaje de Marcado Extensible) es un lenguaje de marcado muy estricto diseñado para <strong>almacenar y transportar datos</strong>, enfocado en qué es la información. 
+            </p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Característica</th>
+                        <th>HTML</th>
+                        <th>XML (Usado en SVG)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Propósito principal</strong></td>
+                        <td>Mostrar datos en pantalla (Diseño y estructura visual).</td>
+                        <td>Describir y almacenar datos (Estructura lógica y matemática).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Etiquetas</strong></td>
+                        <td>Predefinidas (ej: <code>&lt;p&gt;</code>, <code>&lt;h1&gt;</code>, <code>&lt;img&gt;</code>).</td>
+                        <td>Extensibles. En el caso de SVG, usan etiquetas geométricas (ej: <code>&lt;rect&gt;</code>, <code>&lt;circle&gt;</code>,<code>&lt;line&gt;</code> ).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Reglas de sintaxis</strong></td>
+                        <td>Flexible y permisivo. A veces el navegador corrige errores si olvidas cerrar una etiqueta.</td>
+                        <td>Extremadamente estricto. Si una etiqueta no se cierra, el gráfico no se renderizará o dará error.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <hr>
+            <h2>2. Cómo insertar un SVG en un documento HTML</h2>
+            <p>Existen varias formas de integrar un gráfico SVG dentro de tu página web, dependiendo de lo que necesites lograr.</p>
+
+            <h3>A. Código en línea (Inline SVG) - <em>Método recomendado para interactividad</em></h3>
+            <p>Consiste en pegar el código <code>&lt;svg&gt;</code> directamente dentro del HTML (es el método que estamos usando en esta página). Su gran ventaja es que permite modificar las partes del gráfico mediante CSS (por ejemplo, cambiar el color al pasar el ratón) o manipularlo con JavaScript.</p>
+            <pre><code>&lt;body&gt;
+    &lt;h1&gt;Mi Logo&lt;/h1&gt;
+    &lt;!-- El código SVG va directamente aquí --&gt;
+    &lt;svg viewBox="0 0 100 100"&gt;
+        &lt;circle cx="50" cy="50" r="40" fill="red" /&gt;
+    &lt;/svg&gt;
+&lt;/body&gt;</code></pre>
+
+    <h4>Mi Logo</h4>
+    <!-- El código SVG va directamente aquí -->
+    <svg viewBox="0 0 50 20">
+        <circle cx="10" cy="10" r="10" fill="rebeccapurple" />
+    </svg>
+
+            <h3>B. Mediante la etiqueta <code>&lt;img&gt;</code></h3>
+            <p>Si guardas tu código en un archivo externo llamado <code>logo.svg</code>, puedes llamarlo como cualquier otra imagen. Es útil para mantener el HTML limpio, pero pierdes la capacidad de modificar sus colores internos mediante el CSS de la página principal.</p>
+            <pre><code>&lt;img src="logo.svg" alt="Logotipo de la empresa" width="250" height="250"&gt;</code></pre>
+
+            <h3>C. Como fondo en CSS (Background Image)</h3>
+            <p>Ideal para patrones decorativos, iconos de interfaz o fondos que se adaptan a la pantalla.</p>
+            <pre><code>.mi-caja {
+    background-image: url('logo.svg');
+    background-size: cover;
+}</code></pre>
+
+
+        </section>
+
+        <section>
+            <hr>
+            <h2>3. El Sistema de Coordenadas SVG</h2>
+            <p>Para entender el código, es vital saber cómo se posicionan los elementos. El plano cartesiano en SVG no funciona igual que en matemáticas tradicionales:</p>
+            <ul>
+                <li><strong>El punto de origen (0, 0)</strong> está en la esquina <strong>superior izquierda</strong> del lienzo.</li>
+                <li><strong>El eje X</strong> crece hacia la derecha (valores positivos mueven el objeto a la derecha).</li>
+                <li><strong>El eje Y</strong> crece hacia <strong>abajo</strong> (valores positivos mueven el objeto hacia abajo).</li>
+            </ul>
+        </section>
+
+        <section>
+            <hr>
+            <h2>4. Análisis del Código: Logo Técnico</h2>
+
+            <!-- Previsualización del SVG -->
+            <div class="svg-preview">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 250" width="250" height="250">
+                    <rect x="6" y="6" width="238" height="238" rx="42" fill="none" stroke="#0000FF" stroke-width="13" />
+                    <line x1="12" y1="125" x2="238" y2="125" stroke="#444" stroke-width="2" stroke-dasharray="8,6" stroke-dashoffset="3" />
+                    <line x1="125" y1="12" x2="125" y2="238" stroke="#444" stroke-width="2" stroke-dasharray="8,6" stroke-dashoffset="3" />
+                </svg>
+            </div>
+
+            <h3>4.1. El Lienzo (&lt;svg&gt;)</h3>
+            <p>Configuración del área de dibujo y el sistema de coordenadas principal.</p>
+            <ul>
+                <li><code>xmlns="http://www.w3.org/2000/svg"</code>: Define el estándar XML. Indica al navegador que el código contenido debe interpretarse como gráficos vectoriales.</li>
+                <li><code>viewBox="0 0 250 250"</code>: Establece la cuadrícula interna del gráfico. Los dos primeros números (0 0) son las coordenadas de origen. Los dos últimos (250 250) son el ancho y alto relativos internos. Esta es la clave para que el SVG sea escalable.</li>
+                <li><code>width="250" height="250"</code>: El tamaño físico predeterminado en píxeles que ocupará en la pantalla (aunque mediante CSS se puede sobreescribir).</li>
+            </ul>
+
+            <h3>4.2. El Cuadrado Base (&lt;rect&gt;)</h3>
+            <p>Creación de la figura delimitadora con esquinas redondeadas y fondo transparente.</p>
+            <ul>
+                <li><code>x="6" y="6"</code>: Coordenadas de inicio. Se desplaza 6px hacia adentro desde la esquina superior izquierda. Esto se hace porque los bordes en SVG crecen desde el centro de la línea matemática hacia afuera; si estuviera en 0,0, la mitad del grosor del borde quedaría recortado y fuera del lienzo.</li>
+                <li><code>width="238" height="238"</code>: Dimensiones de la forma. Es 250 menos los 12px de márgenes totales (6px por la izquierda + 6px por la derecha).</li>
+                <li><code>rx="44"</code>: Aplica un radio de curvatura de 44 píxeles a las esquinas.</li>
+                <li><code>fill="none"</code>: Hace que el interior del rectángulo carezca de relleno (sea totalmente transparente).</li>
+                <li><code>stroke="#0000FF"</code>: Aplica color al trazo (borde). Usa el modelo de color Hexadecimal; `#0000FF` es azul puro (0 rojo, 0 verde, 255 azul).</li>
+                <li><code>stroke-width="12"</code>: Determina el grosor del borde en 12 unidades (píxeles internos).</li>
+            </ul>
+
+            <h3>4.3. Las Líneas de Cruce (&lt;line&gt;)</h3>
+            <p>Dibujo de las guías internas, aplicando patrones de segmentación geométrica.</p>
+            <ul>
+                <li><strong>Coordenadas (x1, y1, x2, y2):</strong> Definen los puntos de inicio (1) y fin (2) de un segmento recto.
+                    <ul>
+                        <li><strong>Horizontal:</strong> Va del pixel X=12 al X=238 manteniendo la altura constante en Y=125 (el centro exacto de 250).</li>
+                        <li><strong>Vertical:</strong> Va del pixel Y=12 al Y=238 manteniendo la posición horizontal constante en X=125.</li>
+                    </ul>
+                </li>
+                <li><code>stroke="#444" stroke-width="2"</code>: Aplica un color gris oscuro y un grosor de 2 unidades a la línea trazada.</li>
+                <li><code>stroke-dasharray="8,6"</code>: Crea el efecto de línea punteada/discontinua. Le ordena al motor de renderizado: "Dibuja 8 unidades de trazo, deja 6 unidades de vacío, y repite hasta llegar al punto final (x2, y2)".</li>
+                <li><code>stroke-dashoffset="3"</code>: Ajusta el punto de inicio del patrón discontinuo. Desplaza la secuencia 3 unidades hacia atrás. Esto se calculó matemáticamente para forzar que la parte sólida del trazo pase exactamente por la coordenada central (125), logrando que la intersección sea una cruz perfecta limpia, en lugar de un hueco o una unión desfasada.</li>
+            </ul>
+        </section>
+
+        <section>
+            <hr>
+            <h2>5. Código Limpio (Producción)</h2>
+            <p>Este es el código resultante consolidado. Al estar insertado "en línea" (Inline SVG) dentro de este mismo documento HTML, el navegador lo dibuja inmediatamente al leer el código fuente.</p>
+<pre><code>&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 250" width="250" height="250"&gt;
+  &lt;rect x="6" y="6" width="238" height="238" rx="44" fill="none" stroke="#0000FF" stroke-width="12" /&gt;
+  &lt;line x1="12" y1="125" x2="238" y2="125" stroke="#444" stroke-width="2" stroke-dasharray="8,6" stroke-dashoffset="3" /&gt;
+  &lt;line x1="125" y1="12" x2="125" y2="238" stroke="#444" stroke-width="2" stroke-dasharray="8,6" stroke-dashoffset="3" /&gt;
+&lt;/svg&gt;</code></pre>
+        </section>
+
+    </main>
+
+    <footer>
+        <hr>
+        <h6> Handcrafted by <strong><a href="./dleonva.html">David LV</a></strong> &bull; 2026</h6>
+    </footer>
+
+</body>
+
+</html>
