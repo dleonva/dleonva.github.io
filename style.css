@@ -168,6 +168,14 @@ text-decoration: underline;
    ========================================================================== */
 
 /* Estilos para el párrafo introductorio debajo del título principal */
+.logo {
+    /* Define una altura fija para evitar que el logo sea gigante */
+    height: 40px;
+    width: auto;
+    display: block;
+}
+
+
 .class_intro_text {
 /* Color gris medio para que no compita visualmente con el título */
     color: #64748B;
@@ -302,6 +310,7 @@ text-decoration: underline;
 /* =========================================
    2. NAVEGACIÓN (NAVBAR)
    ========================================= */
+
 header nav ul {
     /* Elimina los puntos por defecto de la lista */
     list-style-type: none; 
@@ -316,6 +325,8 @@ header nav ul {
     padding: 10px;
     /* Centra los elementos horizontalmente */
     justify-content: center;
+    /* Centra los elementos verticalmente: */
+    align-items: center;
     /* Bordes redondeados modernos */
     border-radius: 8px;
     /* Sombra suave para dar efecto de elevación (x y blur spread color) */
