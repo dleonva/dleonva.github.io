@@ -94,7 +94,7 @@ body {
     /* Centra el bloque del body horizontalmente */
     margin: 0 auto;
     background-image: url("logo.svg");
-    background-size: cover;
+    background-size: 0.5%;
 }
 
 header {
