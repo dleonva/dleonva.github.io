@@ -199,6 +199,7 @@ text-decoration: underline;
 
 .logo:hover {
     transform: scale(1.15);
+    rotate: -45deg ;
 }
 
 .logo-link {
