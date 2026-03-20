@@ -139,6 +139,12 @@ h2 {
     margin-bottom: 1rem;
 }
 
+h3 {
+    color: magenta;
+    margin-top: 1.5rem;
+}
+
+
 p{
     /* Espaciado inferior para los párrafos */
     margin-bottom: 1.5rem;
@@ -265,7 +271,7 @@ text-decoration: underline;
 }
 
 /* Estilo para los enlaces externos y de archivos */
-.class_resource_link{
+.class-resource-link{
     /* Quita el subrayado inicial */
     text-decoration: none;
     /* Peso de fuente medio */
@@ -276,7 +282,7 @@ text-decoration: underline;
 }
 
 /* Añade un icono visual (flecha) después de los enlaces para indicar salida */
-.class_resource_link::after {
+.class-resource-link::after {
     /* Carácter Unicode de flecha pequeña */
     content: "\2197";
     /* Tamaño reducido respecto al texto */
