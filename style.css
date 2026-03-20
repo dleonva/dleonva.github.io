@@ -93,8 +93,6 @@ body {
     max-width: 800px;
     /* Centra el bloque del body horizontalmente */
     margin: 0 auto;
-    background-image: url("logo.svg");
-    background-size: 0.5%;
 }
 
 header {
@@ -200,8 +198,7 @@ text-decoration: underline;
 }
 
 .logo:hover {
-    transform: scale(1.15);
-    rotate: -45deg ;
+    transform: scale(1.25);
 }
 
 .logo-link {
