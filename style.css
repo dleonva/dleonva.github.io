@@ -93,6 +93,8 @@ body {
     max-width: 800px;
     /* Centra el bloque del body horizontalmente */
     margin: 0 auto;
+    background-image: url("logo.svg");
+    background-size: cover;
 }
 
 header {
