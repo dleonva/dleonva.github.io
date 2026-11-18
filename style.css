@@ -96,6 +96,34 @@ main {
 }
 
 
+/* Estilo del título principal h1 */
+h1 {
+    /* Tamaño de 3rem (48px) */
+    font-size: 3rem;
+    /* Peso tipográfico extra negrita */
+    font-weight: 800;
+    /* Color azul oscuro profundo */
+    color: var(--fondo-oscuro);
+    /* Ajuste negativo sutil entre letras para estética de ingeniería moderna */
+    letter-spacing: -0.02em;
+    /* Separación inferior respecto al subtítulo */
+    margin-bottom: 1rem;
+
+}
+
+/* Estilo del párrafo subtítulo debajo del h1 */
+.subtitle {
+    /* Tamaño ligeramente mayor al texto normal (1.2rem = 19.2px) */
+    font-size: 1.2rem;
+    /* Color gris pizarra intermedio para jerarquía visual */
+    color: var(--texto-secundario);
+    /* Limita el ancho del renglón a 640px para lectura rápida */
+    max-width: 640px;
+
+}
+
+
+
 
 
 
