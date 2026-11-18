@@ -77,12 +77,23 @@ body {
         linear-gradient(90deg, var(--linea-cuadricula) 1px, transparent 1px);
     /* Fija el módulo de la cuadrícula en cuadrados exactos de 40x40 píxeles */
     background-size: 40px 40px;
-    
-
 
 }
 
+/* Contenedor el bloque central */
+main {
+    /* Se expande automáticamente para ocupar todo el alto libre y fijar el footer abajo */
+    flex: 1;
+    /* Limita el ancho máximo a 1200 píxeles en monitores grandes */
+    max-width: 1200px;
+    /* Ocupa todo el ancho disponible hasta alcanzar el límite de 1200px */
+    width: 100%;
+    /* Centra la caja horizontalmente mediante márgenes automáticos laterales */
+    margin: 0 auto;
+    /* Relleno interior: 5rem arriba/abajo y 1.5rem a izquierda/derecha */
+    padding: 5rem 1.5rem;
 
+}
 
 
 
