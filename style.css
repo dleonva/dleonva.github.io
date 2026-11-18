@@ -6,14 +6,11 @@
 /* Selecciona todos los nodos del árbol DOM para eliminar espaciados de fábrica */
 * {
     /* Quita el margen exterior por defecto del navegador */
-    margin:0;
+    margin: 0;
     /* Quita el relleno interior por defecto del navegador */
     padding: 0;
     /* Incluye bordes y rellenos dentro del ancho y alto declarados */
     box-sizing: border-box;
-
-
-
 
 
 }   
@@ -26,15 +23,70 @@
 /* Define las variables globales de color en la raíz del documento */
 
 :root {
+    /* Azul hielo muy claro para el fondo tipo papel técnico */
+    --fondo-principal: #f8fafc;
+
+    /* Gris azulado suave para los trazos de la cuadrícula de 40x40px */
+    --linea-cuadricula: #e2e8f0;
+
+    /* Blanco puro para superficies limpias */
+    --fondo-blanco: #ffffff;
+    
     /* Azul pizarra nocturno para el footer y los encabezados principales */
-    --bg-dark: #0f172a;
+    --fondo-oscuro: #0f172a;
+
+    /* Gris pizarra oscuro para lectura principal */
+    --texto-principal: #1e293b;
+
+    /* Gris intermedio para subtítulos y textos secundarios */
+    --texto-secundario: #475569;
+
+    /* Azul técnico corporativo para estados interactivos (hover) */
+    --azul-marca: #2563eb;
 }
+
 
 /* ==========================================================================
    3. ELEMENTOS BASE Y FONDO DE CUADRÍCULA TÉCNICA
    ========================================================================== */
 
 /* Reglas tipográficas base heredadas por todo el árbol DOM */
+
+html {
+    /* Tipografía nativa de alta nitidez (San Francisco en macOS) */
+    font-family: system-ui, -apple-system, sans-serif;
+    /* Color de texto predeterminado */
+    color: var(--texto-principal);
+    /* Altura de línea de 1.6 para lectura descansada */
+    line-height: 1.6;
+}
+
+/* Configuración del lienzo principal y dibujo geométrico de la cuadrícula */
+body {
+    /* Garantiza que el cuerpo mida al menos el 100% de la altura de la ventana */
+    min-height: 100vh;
+    /* Activa el modelo de caja flexible en el cuerpo */
+    display: flex;
+    /* Apila header, main y footer verticalmente como pisos de un edificio */
+    flex-direction: column;
+    /* Aplica el color base de fondo */
+    background-color: var(--fondo-principal);
+    /* Traza líneas horizontales y verticales de 1px mediante gradientes lineales */
+    background-image:
+        linear-gradient(var(--linea-cuadricula) 1px, transparent 1px),
+        linear-gradient(90deg, var(--linea-cuadricula) 1px, transparent 1px);
+    /* Fija el módulo de la cuadrícula en cuadrados exactos de 40x40 píxeles */
+    background-size: 40px 40px;
+    
+
+
+}
+
+
+
+
+
+
 
 
 /* ==========================================================================
@@ -59,7 +111,7 @@ header nav .brand {
     /* Peso extra fuerte */
     font-weight:800;
     /* Color azul oscuro profundo */
-    color: var(--bg-dark);
+    color: var(--fondo-oscuro);
     /* Espaciado firme entre letras mayúsculas */
     letter-spacing: 0.04em;
     /* Elimina el subrayado del hipervínculo */
