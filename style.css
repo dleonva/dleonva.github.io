@@ -1,0 +1,107 @@
+/* ==========================================================================
+   1. SELECTOR UNIVERSAL (RESET)
+   Limpia márgenes del navegador y asegura cálculo exacto de cajas.
+   ========================================================================== */
+
+/* Selecciona todos los nodos del árbol DOM para eliminar espaciados de fábrica */
+* {
+    /* Quita el margen exterior por defecto del navegador */
+    margin:0;
+    /* Quita el relleno interior por defecto del navegador */
+    padding: 0;
+    /* Incluye bordes y rellenos dentro del ancho y alto declarados */
+    box-sizing: border-box;
+
+
+
+
+
+}   
+
+/* ==========================================================================
+   2. VARIABLES GLOBALES (:root)
+   Paleta corporativa
+   ========================================================================== */
+
+/* Define las variables globales de color en la raíz del documento */
+
+:root {
+    /* Azul pizarra nocturno para el footer y los encabezados principales */
+    --bg-dark: #0f172a;
+}
+
+/* ==========================================================================
+   3. ELEMENTOS BASE Y FONDO DE CUADRÍCULA TÉCNICA
+   ========================================================================== */
+
+/* Reglas tipográficas base heredadas por todo el árbol DOM */
+
+
+/* ==========================================================================
+   4. CONTENEDORES Y SISTEMA DE REJILLAS (LAYOUT)
+   [Reservado para las siguientes entregas]
+   ========================================================================== */
+
+
+/* ==========================================================================
+   5. HEADER CORPORATIVO CON EFECTO CRISTAL (GLASSMORPHISM)
+   ========================================================================== */
+
+/* Contenedor superior adherido al borde de la pantalla */
+
+
+
+
+/* Estilo del nombre de marca a la izquierda */
+header nav .brand {
+    /* Tamaño de 1.2rem */
+    font-size: 1.2rem;
+    /* Peso extra fuerte */
+    font-weight:800;
+    /* Color azul oscuro profundo */
+    color: var(--bg-dark);
+    /* Espaciado firme entre letras mayúsculas */
+    letter-spacing: 0.04em;
+    /* Elimina el subrayado del hipervínculo */
+    text-decoration: none;
+
+}
+
+
+
+/* ==========================================================================
+   6. SISTEMA DE PESTAÑAS Y SECCIONES
+   [Reservado para las siguientes entregas]
+   ========================================================================== */
+
+
+/* ==========================================================================
+   7. ESCENARIO 3D DEL LOGOTIPO ANIMADO (GSAP)
+   [Reservado para las siguientes entregas]
+   ========================================================================== */
+
+
+
+
+/* ==========================================================================
+   8. SECCIONES, TARJETAS Y BOTONES
+   [Reservado para las siguientes entregas]
+   ========================================================================== */
+
+
+
+
+/* ==========================================================================
+   9. COMPONENTES DE INGENIERÍA, FORMULARIO Y FOOTER
+   ========================================================================== */
+
+/* Barra inferior corporativa en azul oscuro */
+
+
+
+
+
+/* ==========================================================================
+   10. ADAPTABILIDAD A CELULARES Y TABLETS (MEDIA QUERIES)
+   [Reservado para las siguientes entregas]
+   ========================================================================== */
