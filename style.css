@@ -188,6 +188,37 @@ header nav .brand {
     text-decoration: none;
 } 
 
+/* Lista horizontal de enlaces del menú */
+header nav ul {
+    /* Quita los puntos de lista predeterminados */
+    list-style: none;
+    /* Coloca los elementos li en fila horizontal */
+    display: flex;
+    /* Espacio de 2rem (32px) entre cada opción del menú */
+    gap: 2rem;
+}
+
+/*  Estilo de cada hipervínculo dentro de la barra */
+header nav ul a {
+    /* Elimina el subrayado por defecto */
+    text-decoration: none;
+    /* Color gris pizarra oscuro */
+    color: var(--texto-principal);
+    /* Grosor seminegrita */
+    font-weight: 600;
+    /* Tamaño técnico de 0.92rem */
+    font-size: 0.92rem;
+    /* Transición suave de 0.2 segundos al cambiar de color */
+    transition: color 0.2s ease;
+}
+
+
+/* Estado interactivo cuando el cursor pasa sobre un enlace del menú */
+header nav ul a:hover {
+    /* Resalta el enlace con el azul técnico corporativo */
+    color: var(--azul-marca);
+}
+
 
 
 
