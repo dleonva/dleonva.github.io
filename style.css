@@ -130,7 +130,6 @@ h1 {
 
 /* ==========================================================================
    4. CONTENEDORES Y SISTEMA DE REJILLAS (LAYOUT)
-   [Reservado para las siguientes entregas]
    ========================================================================== */
 
 
@@ -139,7 +138,39 @@ h1 {
    ========================================================================== */
 
 /* Contenedor superior adherido al borde de la pantalla */
+header {
+    /* Mantiene la barra visible en la parte superior al hacer scroll */
+    position: sticky;
+    /* Coordenada superior cero */
+    top: 0; 
+    /* Blanco translúcido al 85% para dejar ver suavemente la cuadrícula detrás */
+    background-color: rgba(255, 255, 255, 0.85); 
+    /* Aplica desenfoque gaussiano de 8px al fondo detrás de la barra */
+    backdrop-filter: blur(8px);
+    /* Compatibilidad con el motor WebKit de Safari en macOS e iOS */
+    -webkit-backdrop-filter: blur(8px); 
+    /* Borde inferior estructural de 1 píxel */
+    border-bottom: 1px solid var(--linea-cuadricula);
+}
 
+
+/* Caja interna de la barra de navegación */
+header nav {
+    /* Alinea el ancho máximo con el contenedor main (1200px) */
+    max-width: 1200px;
+    /* Centra la barra horizontalmente */
+    margin: 0 auto;
+    /* Altura constante de 72 pixeles */
+    height: 72px;
+    /* Relleno lateral de 1.5rem (24px) */
+    padding: 0 1.5rem;
+    /* Activa Flexbox para distribuir marca a la izquierda y menú a la derecha */
+    display: flex;
+    /* Separa ambos extremos al máximo disponible */
+    justify-content: space-between;
+    /* Alinea verticalmente al centro tanto el logo como los enlaces */
+    align-items: center;
+}
 
 
 
@@ -148,27 +179,27 @@ header nav .brand {
     /* Tamaño de 1.2rem */
     font-size: 1.2rem;
     /* Peso extra fuerte */
-    font-weight:800;
+    font-weight: 800;
     /* Color azul oscuro profundo */
     color: var(--fondo-oscuro);
     /* Espaciado firme entre letras mayúsculas */
     letter-spacing: 0.04em;
     /* Elimina el subrayado del hipervínculo */
     text-decoration: none;
+} 
 
-}
+
+
 
 
 
 /* ==========================================================================
    6. SISTEMA DE PESTAÑAS Y SECCIONES
-   [Reservado para las siguientes entregas]
    ========================================================================== */
 
 
 /* ==========================================================================
    7. ESCENARIO 3D DEL LOGOTIPO ANIMADO (GSAP)
-   [Reservado para las siguientes entregas]
    ========================================================================== */
 
 
@@ -176,7 +207,6 @@ header nav .brand {
 
 /* ==========================================================================
    8. SECCIONES, TARJETAS Y BOTONES
-   [Reservado para las siguientes entregas]
    ========================================================================== */
 
 
@@ -194,5 +224,4 @@ header nav .brand {
 
 /* ==========================================================================
    10. ADAPTABILIDAD A CELULARES Y TABLETS (MEDIA QUERIES)
-   [Reservado para las siguientes entregas]
    ========================================================================== */
