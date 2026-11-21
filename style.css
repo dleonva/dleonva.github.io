@@ -43,7 +43,14 @@
 
     /* Azul técnico corporativo para estados interactivos (hover) */
     --azul-marca: #2563eb;
+
+    /* Gris claro plateado para contraste limpio del footer */
+    --texto-pie-de-pagina: #cbd5e1;
+
+    /* Naranja capybara */
+    --texto-capibara: #b8860b;
 }
+
 
 
 /* ==========================================================================
@@ -222,8 +229,6 @@ header nav ul a:hover {
 
 
 
-
-
 /* ==========================================================================
    6. SISTEMA DE PESTAÑAS Y SECCIONES
    ========================================================================== */
@@ -248,8 +253,39 @@ header nav ul a:hover {
    ========================================================================== */
 
 /* Barra inferior corporativa en azul oscuro */
+footer {
+    /* Aplica el fondo azul pizarra profundo (#0f172a) */
+    background-color: var(--fondo-oscuro);
+    /* Color de texto gris claro plateado para contraste limpio */
+    color: var(--texto-pie-de-pagina);
+    /* Centra el texto horizontalmente */
+    text-align: center;
+    /* Relleno vertical de 1.75rem y horizontal de 1.5rem */
+    padding: 1.75rem 1.5rem; 
+    /* Tamaño de fuente compacto de 0.88rem */
+    font-size: 0.88rem;
+}
 
+/*  Estilo de cada hipervínculo dentro del pie de página */
+footer a {
+    /* Elimina el subrayado por defecto */
+    text-decoration: none;
+    /* Color de texto pie de página */
+    color: var(--texto-capibara);
+    /* Grosor seminegrita */
+    font-weight: 600;
+    /* Tamaño técnico de 0.92rem */
+    font-size: 0.92rem;
+    /* Transición suave de 0.2 segundos al cambiar de color */
+    transition: color 0.2s ease;
+}
 
+/* Estado interactivo cuando el cursos pasa sobre un enlance del pie de página */
+footer a:hover {
+    /* Resalta el enlace en naraja capibara*/
+    color: var(--texto-pie-de-pagina);
+
+}
 
 
 
