@@ -240,6 +240,67 @@ footer a {
 
     }
 
+    /* Enlace limpio para el título del capítulo antes de los versículos destacados */
+.enlace-capitulo {
+    /* Aplica el azul lapislázuli de la paleta clásica */
+    color: var(--lapis-blue);
+    /* Resalta el nombre del capítulo en seminegrita */
+    font-weight: 600;
+    /* Retira el subrayado predeterminado para reducir ruido visual */
+    text-decoration: none;
+    /* Prepara una línea inferior invisible para la transición al pasar el cursor */
+    border-bottom: 1px solid transparent;
+    /* Suaviza el cambio de color y del subrayado durante 0.2 segundos */
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Estado interactivo al pasar el cursor sobre el enlace del capítulo */
+.enlace-capitulo:hover {
+    /* Cambia el texto al carmesí medieval */
+    color: var(--medieval-red);
+    /* Revela una línea inferior fina del mismo color */
+    border-bottom-color: var(--medieval-red);
+}
+
+/* Sublista editorial con sangría y filete dorado para versículos clave */
+.lista-versiculos {
+    /* Sobrescribe el margen de ol: 0.6rem arriba, 0 derecha, 0.75rem abajo, 0.25rem izquierda */
+    margin: 0.6rem 0 0.75rem 0.25rem;
+    /* Reserva espacio interno suficiente para que números de dos dígitos no toquen el borde */
+    padding-left: 2.2rem;
+    /* Dibuja una línea vertical dorada tipo anotación de libro antiguo */
+    border-left: 2px solid var(--medieval-gold);
+}
+
+/* Estilo tipográfico de cada versículo dentro de la glosa */
+.lista-versiculos li {
+    /* Texto en cursiva para diferenciar la cita del título del capítulo */
+    font-style: italic;
+    /* Tamaño ligeramente más contenido que el cuerpo principal */
+    font-size: 0.98rem;
+    /* Interlineado holgado para lectura pausada */
+    line-height: 1.5;
+    /* Tono marrón carbón con alto contraste sobre el fondo pergamino */
+    color: #3d352e;
+    /* Separación sutil entre versículos */
+    margin-bottom: 0.45rem;
+}
+
+/* Elimina el margen sobrante debajo del último versículo de la lista */
+.lista-versiculos li:last-child {
+    /* Ajusta el cierre inferior al ras del borde dorado */
+    margin-bottom: 0;
+}
+
+/* Estiliza únicamente los números de versículo (36., 37., 48.) mediante ::marker */
+.lista-versiculos li::marker {
+    /* Pinta los números en dorado oscuro para jerarquía discreta */
+    color: var(--medieval-gold);
+    /* Peso seminegrita para distinguir el número de la cita */
+    font-weight: 600;
+    /* Mantiene los dígitos rectos aunque el texto del versículo esté en cursiva */
+    font-style: normal;
+}
 /* ==========================================================================
    3. SELECTORES DE ID (ELEMENTOS ÚNICOS)
    ID SELECTORS
