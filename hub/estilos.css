@@ -157,7 +157,7 @@ margin-left: 40px;
 margin-bottom: 40px;
 }
 
-li {
+ol li {
 margin-bottom: 10px;
 }
 
@@ -288,8 +288,10 @@ nav ul {
     /* Pone los elementos uno al lado del otro */
     display: flex; 
     /* Espacio entre cada enlace */
-    gap: 2.5rem;
-    padding: 10px;
+    /* Define 0.75rem (12px) entre filas verticales y 2rem (32px) entre enlaces horizontales */
+    gap: 0.75rem 2rem;
+    /* Relleno interior uniforme alrededor de los enlaces */
+    padding: 0.75rem 1rem;
     /* Centra los elementos horizontalmente */
     justify-content: center;
     /* Permite que los enlaces se organicen en otra fila en celulares */
@@ -342,9 +344,26 @@ main {
     padding: 40px 20px;
 }
 
-/* Evita que la barra superior fija tape el título al saltar a un ancla interna */
+/* Evita que la barra superior fija tape el título al saltar a un ancla interna en computador (1 fila) */
 section[id] {
-    /* Reserva 80px libres arriba del destino al desplazarse */
+    /* Reserva 80px libres arriba del destino al desplazarse en escritorio */
     scroll-margin-top: 80px;
 }
+
+/* Ajustes exclusivos para pantallas de celular (ancho máximo de 640px) */
+@media (max-width: 640px) {
+    /* Compacta ligeramente la separación horizontal de los enlaces en teléfono */
+    nav ul {
+        /* 0.6rem (9.6px) entre filas y 1.25rem (20px) entre enlaces */
+        gap: 0.6rem 1.25rem;
+    }
+
+    /* Aumenta la reserva superior de anclaje  */ 
+    section[id] {
+        /* Reserva 115px para garantizar que el título h2 quede siempre visible bajo la línea dorada */
+        scroll-margin-top: 115px;
+    }
+}
+
+
 
