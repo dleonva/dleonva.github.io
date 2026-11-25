@@ -350,11 +350,15 @@ text-decoration: underline;
 
 
 header nav {
+    /* Activa Flexbox para distribuir el logo y los enlaces */
     display: flex;
-    /* Envía el logo a la izq y la lista a la der */
+    /* Envía el logo a la izquierda y la lista a la derecha */
     justify-content: space-between;
     /* Centra verticalmente */
     align-items: center;
+    /* Fija una altura mínima constante de 60px aunque no existan enlaces a la derecha */
+    min-height:56px;
+    /* Mantiene el relleno lateral de 2rem (32px) sin alterar la altura fijada */
     padding: 0 2rem;
 }
 
@@ -363,9 +367,12 @@ header nav ul {
     /* Elimina los puntos por defecto de la lista */
     list-style-type: none; 
     /* Elimina el espacio interno que el navegador trae por defecto */
-    padding: 1rem 0; 
-    margin:0; /* Elimina el espacio interno  del margen que el navegador trae por defecto */
-    display: flex; /* Pone los elementos uno al lado del otro */
+    /* Quita el relleno vertical porque la altura ahora la controla header nav */
+    padding: 0;
+    /* Elimina el espacio interno  del margen que el navegador trae por defecto */
+    margin:0;
+    /* Pone los elementos uno al lado del otro en fila horizontal */ 
+    display: flex; 
     /* Añade un espacio exacto entre cada elemento de la lista */
     gap: 1.5rem;
 
