@@ -1,0 +1,1421 @@
+<!-- Declara al navegador que el documento sigue el estándar moderno HTML5 -->
+<!DOCTYPE html>
+<!-- Define la raíz del árbol DOM con idioma base español -->
+<html lang="es">
+
+<!-- Cabecera técnica con metadatos, favicon y hoja de estilos interna -->
+<head>
+    <!-- Define la codificación UTF-8 para soportar tildes, eñes y símbolos -->
+    <meta charset="UTF-8">
+    <!-- Ajusta la escala visual al ancho físico real de celulares y monitores -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Título que aparece en la pestaña del navegador -->
+    <title>Lab | Experimental Hub</title>
+    <!-- Reutiliza el logotipo vectorial del Hub como ícono de pestaña -->
+    <link rel="icon" href="./logo.svg" type="image/svg+xml">
+
+    <!-- Hoja de estilos interna autocontenida (100% CSS3 nativo, cero JavaScript) -->
+    <style>
+        /* ==========================================================================
+           1. SELECTOR UNIVERSAL (RESET)
+           Limpia márgenes de fábrica y estandariza el cálculo de cajas.
+           ========================================================================== */
+
+        /* Selecciona todos los elementos del DOM para reiniciar sus espaciados */
+        * {
+            /* Elimina márgenes externos predeterminados del navegador */
+            margin: 0;
+            /* Elimina rellenos internos predeterminados del navegador */
+            padding: 0;
+            /* Incluye bordes y rellenos dentro del ancho y alto totales */
+            box-sizing: border-box;
+        }
+
+        /* ==========================================================================
+           2. VARIABLES GLOBALES (:root) — TEMA CLARO POR DEFECTO
+           Sistema de diseño del laboratorio nombrado descriptivamente en español.
+           ========================================================================== */
+
+        /* Declara las variables de color y tipografía para el modo claro */
+        :root {
+            /* Color papel técnico frío para el fondo general */
+            --fondo-principal: #f8fafc;
+            /* Fondo blanco puro para tarjetas y bloques elevados */
+            --fondo-tarjeta: #ffffff;
+            /* Fondo blanco translúcido para la cabecera con efecto cristal */
+            --fondo-cabecera: rgba(255, 255, 255, 0.88);
+            /* Fondo azul pizarra nocturno para el pie de página */
+            --fondo-pie: #0f172a;
+            /* Fondo gris suave para etiquetas técnicas e interruptores */
+            --fondo-etiqueta: #f1f5f9;
+            /* Fondo azul tenue para la píldora superior del hero */
+            --fondo-indice: #eff6ff;
+            /* Borde azul claro para la píldora superior del hero */
+            --borde-indice: #bfdbfe;
+            /* Color de las líneas de la retícula técnica de fondo */
+            --linea-cuadricula: #e2e8f0;
+            /* Color de borde sutil para delimitar botones y divisores */
+            --borde-suave: #cbd5e1;
+            /* Color principal de títulos de alto contraste */
+            --texto-titular: #0f172a;
+            /* Color principal de lectura */
+            --texto-principal: #1e293b;
+            /* Color secundario para descripciones y notas */
+            --texto-secundario: #475569;
+            /* Color claro para texto sobre el fondo oscuro del footer */
+            --texto-pie: #cbd5e1;
+            /* Azul laboratorio para enlaces activos y acentos de ingeniería */
+            --azul-laboratorio: #2563eb;
+            /* Azul profundo para estado hover de enlaces */
+            --azul-hover: #1d4ed8;
+            /* Fondo del botón de filtro o idioma cuando está seleccionado */
+            --fondo-control-activo: #0f172a;
+            /* Texto del botón de filtro o idioma cuando está seleccionado */
+            --texto-control-activo: #ffffff;
+            /* Verde esmeralda para indicadores de experimentos activos */
+            --verde-activo: #059669;
+            /* Fondo verde suave para píldora de estado activo */
+            --fondo-activo: #ecfdf5;
+            /* Borde verde suave para píldora de estado activo */
+            --borde-activo: #a7f3d0;
+            /* Ámbar técnico para experimentos en desarrollo */
+            --ambar-proceso: #b45309;
+            /* Fondo ámbar suave para píldora de estado en construcción */
+            --fondo-proceso: #fffbeb;
+            /* Borde ámbar suave para píldora de estado en construcción */
+            --borde-proceso: #fde68a;
+            /* Sombra sutil para tarjetas en modo claro */
+            --sombra-tarjeta: 0 2px 10px rgba(15, 23, 42, 0.04);
+            /* Sombra elevada al pasar el cursor sobre una tarjeta */
+            --sombra-hover: 0 12px 24px rgba(37, 99, 235, 0.09);
+            /* Color de borde azul suave al pasar el cursor por una tarjeta */
+            --borde-hover: #93c5fd;
+            /* Radio de esquina estándar para tarjetas */
+            --radio-tarjeta: 14px;
+            /* Radio de esquina para píldoras y botones */
+            --radio-boton: 999px;
+            /* Tipografía principal nativa del sistema operativo */
+            --fuente-principal: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            /* Tipografía monoespaciada para códigos y numeración técnica */
+            --fuente-codigo: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        }
+
+        /* ==========================================================================
+           3. ELEMENTOS BASE Y LIENZO DE LABORATORIO
+           ========================================================================== */
+
+        /* Configuración tipográfica y de desplazamiento en la raíz del documento */
+        html {
+            /* Aplica la pila tipográfica nativa */
+            font-family: var(--fuente-principal);
+            /* Factor multiplicador adimensional para interlineado legible */
+            line-height: 1.6;
+            /* Suaviza el desplazamiento al navegar por anclas internas */
+            scroll-behavior: smooth;
+        }
+
+        /* Configuración base del cuerpo del documento */
+        body {
+            /* Ocupa al menos el 100% de la altura de la ventana */
+            min-height: 100vh;
+            /* Fondo de respaldo para evitar destellos blancos en los bordes */
+            background-color: var(--fondo-principal);
+        }
+
+        /* Contenedor global flexible que recibe las variables de tema y dibuja el lienzo */
+        .envoltorio-pagina {
+            /* Altura mínima igual al 100% de la ventana gráfica */
+            min-height: 100vh;
+            /* Apila cabecera, contenido principal y pie de página en columna */
+            display: flex;
+            /* Dirección vertical de apilamiento */
+            flex-direction: column;
+            /* Aplica el color de texto principal del tema activo */
+            color: var(--texto-principal);
+            /* Aplica el color de fondo del tema activo */
+            background-color: var(--fondo-principal);
+            /* Dibuja la retícula cartesiana de líneas de 1px con las variables del tema */
+            background-image:
+                linear-gradient(var(--linea-cuadricula) 1px, transparent 1px),
+                linear-gradient(90deg, var(--linea-cuadricula) 1px, transparent 1px);
+            /* Tamaño exacto del módulo de la cuadrícula (32x32 píxeles) */
+            background-size: 32px 32px;
+            /* Transición suave de colores al alternar entre modo claro y oscuro */
+            transition: background-color 0.25s ease, color 0.25s ease;
+        }
+
+        /* ==========================================================================
+           4. CONTENEDORES Y SISTEMA DE REJILLAS (LAYOUT)
+           ========================================================================== */
+
+        /* Contenedor centrado de ancho máximo ergonómico */
+        .contenedor {
+            /* Ancho máximo para lectura cómoda en monitores grandes */
+            max-width: 1120px;
+            /* Ocupa todo el ancho disponible hasta llegar a 1120px */
+            width: 100%;
+            /* Centra el contenedor horizontalmente */
+            margin: 0 auto;
+            /* Recubrimiento interno lateral para que el contenido no toque bordes */
+            padding: 0 1.5rem;
+        }
+
+        /* Bloque principal que empuja el footer hacia el fondo de la pantalla */
+        main {
+            /* Absorbe todo el espacio vertical sobrante */
+            flex: 1;
+            /* Relleno superior e inferior del área de trabajo */
+            padding: 3.5rem 0 5rem;
+        }
+
+        /* Rejilla adaptable que inicializa el contador automático de experimentos */
+        .rejilla-experimentos {
+            /* Inicializa el contador automático CSS en 0 antes de la primera tarjeta */
+            counter-reset: contador-exp;
+            /* Activa CSS Grid para distribuir tarjetas */
+            display: grid;
+            /* Crea columnas automáticas con ancho mínimo de 310px */
+            grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+            /* Separación de 1.5rem (24px) entre tarjetas */
+            gap: 1.5rem;
+        }
+
+        /* ==========================================================================
+           5. CABECERA, ANCLAS INTERNAS Y CONTROLES (IDIOMA + TEMA)
+           ========================================================================== */
+
+        /* Cabecera superior fija con efecto de cristal desenfocado */
+        .cabecera-lab {
+            /* Fija la barra superior durante el desplazamiento */
+            position: sticky;
+            /* Ancla la barra en la coordenada superior 0 */
+            top: 0;
+            /* Garantiza que flote por encima del resto de capas */
+            z-index: 100;
+            /* Aplica el fondo translúcido correspondiente al tema activo */
+            background-color: var(--fondo-cabecera);
+            /* Desenfoca la cuadrícula trasera */
+            backdrop-filter: blur(10px);
+            /* Compatibilidad con Safari en macOS e iOS */
+            -webkit-backdrop-filter: blur(10px);
+            /* Línea divisoria inferior de 1 píxel */
+            border-bottom: 1px solid var(--linea-cuadricula);
+            /* Suaviza el cambio de fondo al alternar el tema */
+            transition: background-color 0.25s ease, border-color 0.25s ease;
+        }
+
+        /* Distribución interna de la barra superior */
+        .barra-navegacion {
+            /* Altura mínima de 72px */
+            min-height: 72px;
+            /* Alinea marca a la izquierda y controles a la derecha */
+            display: flex;
+            /* Permite salto ordenado de línea en pantallas angostas */
+            flex-wrap: wrap;
+            /* Distribuye los bloques hacia los extremos */
+            justify-content: space-between;
+            /* Centra verticalmente todos los elementos */
+            align-items: center;
+            /* Espacio entre bloques si se envuelven en móvil */
+            gap: 1rem;
+            /* Relleno vertical compacto para móviles */
+            padding: 0.75rem 0;
+        }
+
+        /* Enlace de marca a la izquierda (único puente de retorno hacia hub/index.html) */
+        .marca-hub {
+            /* Coloca el logotipo SVG junto al texto */
+            display: flex;
+            /* Centrado vertical */
+            align-items: center;
+            /* Separación de 0.75rem entre logotipo y texto */
+            gap: 0.75rem;
+            /* Elimina el subrayado del hipervínculo */
+            text-decoration: none;
+            /* Color de alto contraste */
+            color: var(--texto-titular);
+        }
+
+        /* Dimensiones del logotipo SVG en la barra superior */
+        .logo-hub {
+            /* Ancho de 34px */
+            width: 34px;
+            /* Alto de 34px */
+            height: 34px;
+            /* Suaviza la ampliación interactiva */
+            transition: transform 0.2s ease;
+        }
+
+        /* Efecto de escala sutil al pasar el cursor sobre la marca */
+        .marca-hub:hover .logo-hub {
+            /* Aumenta un 8% el tamaño del ícono */
+            transform: scale(1.08);
+        }
+
+        /* Nombre principal del laboratorio experimental */
+        .marca-texto {
+            /* Tamaño de 0.95rem */
+            font-size: 0.95rem;
+            /* Peso extra negrita */
+            font-weight: 800;
+            /* Compresión ligera de letras */
+            letter-spacing: -0.01em;
+        }
+
+        /* Ruta técnica mostrada debajo del nombre de marca */
+        .marca-sub {
+            /* Fuente monoespaciada */
+            font-family: var(--fuente-codigo);
+            /* Tamaño compacto */
+            font-size: 0.72rem;
+            /* Color azul laboratorio */
+            color: var(--azul-laboratorio);
+            /* Muestra el texto en su propia línea */
+            display: block;
+            /* Grosor seminegrita */
+            font-weight: 600;
+        }
+
+        /* Contenedor derecho que agrupa enlaces internos, idioma y modo oscuro */
+        .controles-cabecera {
+            /* Alinea navegación interna y botones en fila horizontal */
+            display: flex;
+            /* Permite envolver en celulares */
+            flex-wrap: wrap;
+            /* Centrado vertical */
+            align-items: center;
+            /* Separación de 1.25rem entre grupos */
+            gap: 1.25rem;
+        }
+
+        /* Lista de anclas internas de la misma página */
+        .menu-enlaces {
+            /* Elimina viñetas de lista */
+            list-style: none;
+            /* Alinea anclas en fila horizontal */
+            display: flex;
+            /* Permite envolver en pantallas pequeñas */
+            flex-wrap: wrap;
+            /* Separación entre enlaces */
+            gap: 1.25rem;
+            /* Centrado vertical */
+            align-items: center;
+        }
+
+        /* Estilo de los hipervínculos internos */
+        .menu-enlaces a {
+            /* Elimina el subrayado predeterminado */
+            text-decoration: none;
+            /* Color secundario */
+            color: var(--texto-secundario);
+            /* Grosor seminegrita */
+            font-weight: 600;
+            /* Tamaño técnico */
+            font-size: 0.88rem;
+            /* Transición suave de color */
+            transition: color 0.2s ease;
+        }
+
+        /* Estado interactivo de los enlaces internos */
+        .menu-enlaces a:hover {
+            /* Resalta con el azul del laboratorio */
+            color: var(--azul-laboratorio);
+        }
+
+        /* Grupo de interruptores de utilidad (ES/EN y Claro/Oscuro) */
+        .grupo-utilidades {
+            /* Alinea ambos interruptores uno junto al otro */
+            display: flex;
+            /* Centrado vertical */
+            align-items: center;
+            /* Separación de 0.6rem entre ambos controles */
+            gap: 0.6rem;
+        }
+
+        /* Cápsula contenedora del selector bilingüe ES | EN */
+        .selector-idioma {
+            /* Alinea las dos opciones de idioma en fila */
+            display: inline-flex;
+            /* Fondo suave de etiqueta */
+            background-color: var(--fondo-etiqueta);
+            /* Borde fino perimetral */
+            border: 1px solid var(--borde-suave);
+            /* Bordes totalmente redondeados */
+            border-radius: var(--radio-boton);
+            /* Relleno mínimo interior para efecto de interruptor segmentado */
+            padding: 0.18rem;
+            /* Espacio entre ES y EN */
+            gap: 0.15rem;
+        }
+
+        /* Cada opción clicable del selector de idioma */
+        .opcion-idioma {
+            /* Puntero de mano interactivo */
+            cursor: pointer;
+            /* Impide selección accidental de texto al hacer clic */
+            user-select: none;
+            /* Fuente monoespaciada técnica */
+            font-family: var(--fuente-codigo);
+            /* Tamaño compacto */
+            font-size: 0.74rem;
+            /* Grosor negrita */
+            font-weight: 700;
+            /* Color secundario cuando está inactivo */
+            color: var(--texto-secundario);
+            /* Relleno interno */
+            padding: 0.25rem 0.6rem;
+            /* Forma de píldora */
+            border-radius: var(--radio-boton);
+            /* Transición suave de colores */
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        /* Botón interruptor de Modo Claro / Modo Oscuro */
+        .boton-tema {
+            /* Puntero interactivo */
+            cursor: pointer;
+            /* Evita selección accidental de texto */
+            user-select: none;
+            /* Alinea ícono y etiqueta en fila */
+            display: inline-flex;
+            /* Centrado vertical */
+            align-items: center;
+            /* Separación entre ícono y texto */
+            gap: 0.4rem;
+            /* Fondo de tarjeta para destacar sobre la cabecera */
+            background-color: var(--fondo-tarjeta);
+            /* Borde fino */
+            border: 1px solid var(--borde-suave);
+            /* Forma de píldora */
+            border-radius: var(--radio-boton);
+            /* Relleno interno */
+            padding: 0.35rem 0.85rem;
+            /* Tamaño compacto */
+            font-size: 0.78rem;
+            /* Grosor seminegrita */
+            font-weight: 600;
+            /* Color de texto principal */
+            color: var(--texto-principal);
+            /* Transición suave */
+            transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+        }
+
+        /* Efecto hover del botón de tema */
+        .boton-tema:hover {
+            /* Resalta el borde con el azul del laboratorio */
+            border-color: var(--azul-laboratorio);
+            /* Resalta el texto */
+            color: var(--azul-laboratorio);
+        }
+
+        /* ==========================================================================
+           6. LÓGICA INTERACTIVA EN PURO CSS (TEMA OSCURO + IDIOMA + FILTROS)
+           ========================================================================== */
+
+        /* Oculta los controles de estado (checkbox y radios) manteniéndolos operativos */
+        .control-estado {
+            /* Fija los inputs a la ventana gráfica para evitar saltos de scroll al hacer clic */
+            position: fixed;
+            /* Coordenada superior fija */
+            top: 0;
+            /* Coordenada izquierda fija */
+            left: 0;
+            /* Transparencia total */
+            opacity: 0;
+            /* Evita que intercepten eventos del puntero */
+            pointer-events: none;
+        }
+
+        /* --- A. MÁQUINA DE ESTADO: MODO OSCURO EN PURO CSS --- */
+
+        /* Actualiza el color de respaldo del body en navegadores que soportan :has() */
+        body:has(#modo-oscuro:checked) {
+            /* Pinta el fondo base del navegador en azul noche profundo */
+            background-color: #0b1120;
+        }
+
+        /* Redefine todas las variables de color cuando el checkbox #modo-oscuro está activo */
+        #modo-oscuro:checked ~ .envoltorio-pagina {
+            /* Fondo principal oscuro técnico */
+            --fondo-principal: #0b1120;
+            /* Superficie elevada de tarjetas en gris azulado profundo */
+            --fondo-tarjeta: #111827;
+            /* Cabecera translúcida oscura */
+            --fondo-cabecera: rgba(11, 17, 32, 0.88);
+            /* Pie de página en tono negro azulado */
+            --fondo-pie: #020617;
+            /* Fondo de etiquetas e interruptores oscuros */
+            --fondo-etiqueta: #1e293b;
+            /* Fondo translúcido para la etiqueta superior del hero */
+            --fondo-indice: rgba(37, 99, 235, 0.16);
+            /* Borde translúcido para la etiqueta superior del hero */
+            --borde-indice: rgba(96, 165, 250, 0.35);
+            /* Líneas de cuadrícula sutiles en modo oscuro */
+            --linea-cuadricula: #1e293b;
+            /* Bordes suaves para contraste nocturno */
+            --borde-suave: #334155;
+            /* Títulos en blanco nieve de alta nitidez */
+            --texto-titular: #f8fafc;
+            /* Texto principal claro */
+            --texto-principal: #e2e8f0;
+            /* Texto secundario gris azulado claro */
+            --texto-secundario: #94a3b8;
+            /* Azul laboratorio luminoso para contraste WCAG AA en oscuro */
+            --azul-laboratorio: #60a5fa;
+            /* Azul claro para estado hover */
+            --azul-hover: #93c5fd;
+            /* Fondo del filtro/idioma activo en modo oscuro */
+            --fondo-control-activo: #2563eb;
+            /* Texto blanco sobre control activo */
+            --texto-control-activo: #ffffff;
+            /* Verde luminoso para estado activo */
+            --verde-activo: #34d399;
+            /* Fondo verde translúcido */
+            --fondo-activo: rgba(16, 185, 129, 0.15);
+            /* Borde verde sutil */
+            --borde-activo: rgba(52, 211, 153, 0.35);
+            /* Ámbar luminoso para estado en construcción */
+            --ambar-proceso: #fbbf24;
+            /* Fondo ámbar translúcido */
+            --fondo-proceso: rgba(245, 158, 11, 0.15);
+            /* Borde ámbar sutil */
+            --borde-proceso: rgba(251, 191, 36, 0.35);
+            /* Sombra profunda para tarjetas nocturnas */
+            --sombra-tarjeta: 0 4px 16px rgba(0, 0, 0, 0.35);
+            /* Sombra elevada con brillo azul sutil al pasar el cursor */
+            --sombra-hover: 0 12px 28px rgba(37, 99, 235, 0.2);
+            /* Borde azul brillante en hover */
+            --borde-hover: #3b82f6;
+        }
+
+        /* Oculta por defecto la etiqueta "Modo Claro" mientras estamos en modo claro */
+        .etiqueta-ir-claro {
+            /* No se muestra inicialmente */
+            display: none;
+        }
+
+        /* Muestra por defecto la etiqueta "Modo Oscuro" en fila */
+        .etiqueta-ir-oscuro {
+            /* Alinea el ícono y el texto */
+            display: inline-flex;
+            /* Centrado vertical */
+            align-items: center;
+            /* Espacio entre ícono y texto */
+            gap: 0.35rem;
+        }
+
+        /* Al activar modo oscuro, oculta el aviso de ir a oscuro */
+        #modo-oscuro:checked ~ .envoltorio-pagina .etiqueta-ir-oscuro {
+            /* Oculta el texto de cambiar a oscuro */
+            display: none;
+        }
+
+        /* Al activar modo oscuro, muestra el aviso de volver a claro */
+        #modo-oscuro:checked ~ .envoltorio-pagina .etiqueta-ir-claro {
+            /* Alinea el ícono de sol y el texto */
+            display: inline-flex;
+            /* Centrado vertical */
+            align-items: center;
+            /* Espacio entre ícono y texto */
+            gap: 0.35rem;
+        }
+
+        /* --- B. MÁQUINA DE ESTADO: BILINGÜE ESPAÑOL / INGLÉS EN PURO CSS --- */
+
+        /* Oculta los textos en inglés por defecto (español activo inicialmente) */
+        .texto-en {
+            /* Oculto mientras #idioma-es está seleccionado */
+            display: none;
+        }
+
+        /* Cuando se selecciona inglés, oculta todos los fragmentos en español */
+        #idioma-en:checked ~ .envoltorio-pagina .texto-es {
+            /* Retira los textos en español */
+            display: none;
+        }
+
+        /* Cuando se selecciona inglés, muestra todos los fragmentos en inglés */
+        #idioma-en:checked ~ .envoltorio-pagina .texto-en {
+            /* Muestra los textos en inglés en línea */
+            display: inline;
+        }
+
+        /* Resalta la píldora ES o EN que esté seleccionada en el interruptor */
+        #idioma-es:checked ~ .envoltorio-pagina label[for="idioma-es"],
+        #idioma-en:checked ~ .envoltorio-pagina label[for="idioma-en"] {
+            /* Fondo del control activo según el tema */
+            background-color: var(--fondo-control-activo);
+            /* Texto blanco de alto contraste */
+            color: var(--texto-control-activo);
+        }
+
+        /* --- C. MÁQUINA DE ESTADO: FILTROS POR DISCIPLINA EN PURO CSS --- */
+
+        /* Resalta el botón del filtro de categoría activo */
+        #filtro-todos:checked ~ .envoltorio-pagina label[for="filtro-todos"],
+        #filtro-ingenieria:checked ~ .envoltorio-pagina label[for="filtro-ingenieria"],
+        #filtro-cocina:checked ~ .envoltorio-pagina label[for="filtro-cocina"],
+        #filtro-finanzas:checked ~ .envoltorio-pagina label[for="filtro-finanzas"] {
+            /* Fondo activo según tema claro u oscuro */
+            background-color: var(--fondo-control-activo);
+            /* Texto blanco puro */
+            color: var(--texto-control-activo);
+            /* Borde integrado */
+            border-color: var(--fondo-control-activo);
+        }
+
+        /* Oculta tarjetas que no pertenecen a Ingeniería cuando ese filtro está activo */
+        #filtro-ingenieria:checked ~ .envoltorio-pagina .tarjeta-experimento:not(.cat-ingenieria) {
+            /* Retira la tarjeta del flujo visual */
+            display: none;
+        }
+
+        /* Oculta tarjetas que no pertenecen a Cocina cuando ese filtro está activo */
+        #filtro-cocina:checked ~ .envoltorio-pagina .tarjeta-experimento:not(.cat-cocina) {
+            /* Retira la tarjeta del flujo visual */
+            display: none;
+        }
+
+        /* Oculta tarjetas que no pertenecen a Finanzas cuando ese filtro está activo */
+        #filtro-finanzas:checked ~ .envoltorio-pagina .tarjeta-experimento:not(.cat-finanzas) {
+            /* Retira la tarjeta del flujo visual */
+            display: none;
+        }
+
+        /* ==========================================================================
+           7. HERO EDITORIAL DEL LABORATORIO Y BARRA DE FILTROS
+           ========================================================================== */
+
+        /* Tarjeta principal de presentación del laboratorio */
+        .hero-lab {
+            /* Margen superior de desplazamiento para que el header fijo no tape el ancla */
+            scroll-margin-top: 96px;
+            /* Fondo de tarjeta según tema activo */
+            background-color: var(--fondo-tarjeta);
+            /* Borde fino estructural */
+            border: 1px solid var(--linea-cuadricula);
+            /* Esquinas redondeadas */
+            border-radius: var(--radio-tarjeta);
+            /* Relleno interno generoso */
+            padding: 2.75rem;
+            /* Separación inferior respecto al catálogo */
+            margin-bottom: 2.5rem;
+            /* Sombra de profundidad */
+            box-shadow: var(--sombra-tarjeta);
+            /* Transición suave al cambiar de tema */
+            transition: background-color 0.25s ease, border-color 0.25s ease;
+        }
+
+        /* Píldora técnica encima del título principal */
+        .etiqueta-indice {
+            /* Tipografía monoespaciada */
+            font-family: var(--fuente-codigo);
+            /* Tamaño compacto */
+            font-size: 0.78rem;
+            /* Peso negrita */
+            font-weight: 700;
+            /* Mayúsculas técnicas */
+            text-transform: uppercase;
+            /* Separación positiva entre mayúsculas */
+            letter-spacing: 0.06em;
+            /* Color azul laboratorio */
+            color: var(--azul-laboratorio);
+            /* Fondo azul tenue */
+            background-color: var(--fondo-indice);
+            /* Borde fino */
+            border: 1px solid var(--borde-indice);
+            /* Forma de píldora */
+            border-radius: var(--radio-boton);
+            /* Relleno interno */
+            padding: 0.3rem 0.85rem;
+            /* Bloque en línea */
+            display: inline-block;
+            /* Separación inferior */
+            margin-bottom: 1.25rem;
+        }
+
+        /* Único título h1 de la página */
+        .hero-lab h1 {
+            /* Escala fluida entre 2.1rem en móvil y 3.1rem en monitor */
+            font-size: clamp(2.1rem, 4vw, 3.1rem);
+            /* Peso extra negrita */
+            font-weight: 800;
+            /* Compresión negativa sutil para titulares grandes */
+            letter-spacing: -0.025em;
+            /* Interlineado firme */
+            line-height: 1.12;
+            /* Color de titular adaptable a claro/oscuro */
+            color: var(--texto-titular);
+            /* Separación respecto al manifiesto */
+            margin-bottom: 1rem;
+        }
+
+        /* Párrafo general de propósito del laboratorio */
+        .manifiesto-lab {
+            /* Tamaño destacado */
+            font-size: 1.12rem;
+            /* Color secundario */
+            color: var(--texto-secundario);
+            /* Limita el ancho del renglón a 68 caracteres */
+            max-width: 68ch;
+            /* Separación respecto a las métricas inferiores */
+            margin-bottom: 1.75rem;
+        }
+
+        /* Franja inferior del hero con dos pilares técnicos atemporales */
+        .metricas-lab {
+            /* Línea divisoria punteada superior */
+            border-top: 1px dashed var(--borde-suave);
+            /* Espacio superior */
+            padding-top: 1.25rem;
+            /* Distribución horizontal */
+            display: flex;
+            /* Salto de línea en pantallas pequeñas */
+            flex-wrap: wrap;
+            /* Separación entre columnas */
+            gap: 2.5rem;
+        }
+
+        /* Cada bloque de principio técnico */
+        .metrica-item {
+            /* Tamaño compacto */
+            font-size: 0.84rem;
+            /* Color secundario */
+            color: var(--texto-secundario);
+        }
+
+        /* Título destacado dentro de cada principio */
+        .metrica-item strong {
+            /* Fuente monoespaciada */
+            font-family: var(--fuente-codigo);
+            /* Color de titular adaptable */
+            color: var(--texto-titular);
+            /* Muestra el valor en su propia línea */
+            display: block;
+            /* Tamaño de 0.95rem */
+            font-size: 0.95rem;
+        }
+
+        /* Encabezado de la sección del índice de experimentos y botones de filtro */
+        .barra-filtros {
+            /* Margen de anclaje superior para el menú fijo */
+            scroll-margin-top: 96px;
+            /* Alinea título de índice y filtros */
+            display: flex;
+            /* Permite salto en móvil */
+            flex-wrap: wrap;
+            /* Extremos opuestos */
+            justify-content: space-between;
+            /* Centrado vertical */
+            align-items: center;
+            /* Separación si envuelve */
+            gap: 1rem;
+            /* Margen inferior antes de las tarjetas */
+            margin-bottom: 1.75rem;
+        }
+
+        /* Título del catálogo */
+        .titulo-catalogo {
+            /* Tipografía monoespaciada */
+            font-family: var(--fuente-codigo);
+            /* Tamaño técnico */
+            font-size: 0.85rem;
+            /* Peso negrita */
+            font-weight: 700;
+            /* Mayúsculas */
+            text-transform: uppercase;
+            /* Separación entre caracteres */
+            letter-spacing: 0.05em;
+            /* Color secundario */
+            color: var(--texto-secundario);
+        }
+
+        /* Grupo horizontal de botones de filtro */
+        .grupo-filtros {
+            /* Fila flexible */
+            display: flex;
+            /* Permite envolver en celulares */
+            flex-wrap: wrap;
+            /* Separación entre botones */
+            gap: 0.5rem;
+        }
+
+        /* Estilo base de cada botón de filtro */
+        .boton-filtro {
+            /* Puntero interactivo */
+            cursor: pointer;
+            /* Evita selección accidental */
+            user-select: none;
+            /* Fondo de tarjeta */
+            background-color: var(--fondo-tarjeta);
+            /* Borde sutil */
+            border: 1px solid var(--borde-suave);
+            /* Forma de píldora */
+            border-radius: var(--radio-boton);
+            /* Relleno interno cómodo */
+            padding: 0.45rem 1rem;
+            /* Tamaño compacto */
+            font-size: 0.84rem;
+            /* Grosor seminegrita */
+            font-weight: 600;
+            /* Color secundario */
+            color: var(--texto-secundario);
+            /* Transición suave */
+            transition: all 0.2s ease;
+        }
+
+        /* Estado hover de los botones de filtro */
+        .boton-filtro:hover {
+            /* Resalta borde */
+            border-color: var(--azul-laboratorio);
+            /* Resalta color de texto */
+            color: var(--texto-titular);
+        }
+
+        /* ==========================================================================
+           8. TARJETAS DE EXPERIMENTOS Y CONTADOR AUTOMÁTICO CSS
+           ========================================================================== */
+
+        /* Cada tarjeta de experimento incrementa automáticamente el contador CSS */
+        .tarjeta-experimento {
+            /* Suma +1 al contador CSS por cada tarjeta presente en el DOM */
+            counter-increment: contador-exp;
+            /* Fondo de tarjeta según tema */
+            background-color: var(--fondo-tarjeta);
+            /* Borde perimetral */
+            border: 1px solid var(--linea-cuadricula);
+            /* Esquinas redondeadas */
+            border-radius: var(--radio-tarjeta);
+            /* Relleno interno */
+            padding: 1.75rem;
+            /* Flexbox vertical para alinear el enlace siempre abajo */
+            display: flex;
+            /* Dirección vertical */
+            flex-direction: column;
+            /* Distribuye contenido arriba y acción abajo */
+            justify-content: space-between;
+            /* Separación interna */
+            gap: 1.25rem;
+            /* Sombra de tarjeta */
+            box-shadow: var(--sombra-tarjeta);
+            /* Transición fluida */
+            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.25s ease;
+        }
+
+        /* Elevación interactiva de la tarjeta al pasar el cursor */
+        .tarjeta-experimento:hover {
+            /* Desplaza ligeramente hacia arriba */
+            transform: translateY(-3px);
+            /* Resalta borde con color hover del tema */
+            border-color: var(--borde-hover);
+            /* Aplica sombra elevada */
+            box-shadow: var(--sombra-hover);
+        }
+
+        /* Encabezado interno de tarjeta (código automático + estado) */
+        .cabecera-tarjeta {
+            /* Alinea código a la izquierda y estado a la derecha */
+            display: flex;
+            /* Separación a extremos */
+            justify-content: space-between;
+            /* Centrado vertical */
+            align-items: center;
+            /* Espacio mínimo */
+            gap: 0.5rem;
+            /* Separación inferior */
+            margin-bottom: 0.85rem;
+        }
+
+        /* Etiqueta del código de experimento */
+        .codigo-exp {
+            /* Tipografía monoespaciada */
+            font-family: var(--fuente-codigo);
+            /* Tamaño compacto */
+            font-size: 0.78rem;
+            /* Grosor negrita */
+            font-weight: 700;
+            /* Color secundario */
+            color: var(--texto-secundario);
+        }
+
+        /* Imprime automáticamente "EXP-01 • ", "EXP-02 • ", etc., sin escribir números a mano */
+        .codigo-exp::before {
+            /* Genera el prefijo con cero a la izquierda (decimal-leading-zero) */
+            content: "EXP-" counter(contador-exp, decimal-leading-zero) " • ";
+            /* Color azul del laboratorio para el número */
+            color: var(--azul-laboratorio);
+        }
+
+        /* Píldora de estado del experimento */
+        .estado-exp {
+            /* Tamaño pequeño */
+            font-size: 0.72rem;
+            /* Grosor negrita */
+            font-weight: 700;
+            /* Relleno interno */
+            padding: 0.2rem 0.65rem;
+            /* Forma de píldora */
+            border-radius: var(--radio-boton);
+            /* Evita salto de línea */
+            white-space: nowrap;
+        }
+
+        /* Variante visual para experimentos ya activos */
+        .estado-activo {
+            /* Fondo verde suave adaptable */
+            background-color: var(--fondo-activo);
+            /* Texto verde */
+            color: var(--verde-activo);
+            /* Borde verde */
+            border: 1px solid var(--borde-activo);
+        }
+
+        /* Variante visual para experimentos en construcción */
+        .estado-proceso {
+            /* Fondo ámbar suave adaptable */
+            background-color: var(--fondo-proceso);
+            /* Texto ámbar */
+            color: var(--ambar-proceso);
+            /* Borde ámbar */
+            border: 1px solid var(--borde-proceso);
+        }
+
+        /* Título de cada tarjeta de experimento */
+        .tarjeta-experimento h2 {
+            /* Tamaño de 1.2rem */
+            font-size: 1.2rem;
+            /* Grosor negrita */
+            font-weight: 700;
+            /* Color de titular adaptable */
+            color: var(--texto-titular);
+            /* Separación inferior */
+            margin-bottom: 0.5rem;
+            /* Interlineado firme */
+            line-height: 1.3;
+        }
+
+        /* Descripción del experimento */
+        .tarjeta-experimento p {
+            /* Tamaño de lectura */
+            font-size: 0.93rem;
+            /* Color secundario */
+            color: var(--texto-secundario);
+            /* Separación antes de las etiquetas técnicas */
+            margin-bottom: 1rem;
+        }
+
+        /* Fila de etiquetas de tecnología */
+        .etiquetas-tecnicas {
+            /* Distribución horizontal */
+            display: flex;
+            /* Salto de línea */
+            flex-wrap: wrap;
+            /* Separación entre etiquetas */
+            gap: 0.4rem;
+        }
+
+        /* Cada etiqueta técnica individual */
+        .etiqueta-tech {
+            /* Fuente monoespaciada */
+            font-family: var(--fuente-codigo);
+            /* Tamaño pequeño */
+            font-size: 0.72rem;
+            /* Color secundario */
+            color: var(--texto-secundario);
+            /* Fondo de etiqueta adaptable */
+            background-color: var(--fondo-etiqueta);
+            /* Relleno compacto */
+            padding: 0.2rem 0.55rem;
+            /* Esquinas redondeadas */
+            border-radius: 6px;
+        }
+
+        /* Zona inferior de acción de la tarjeta */
+        .pie-tarjeta {
+            /* Línea divisoria superior */
+            border-top: 1px solid var(--linea-cuadricula);
+            /* Espacio superior */
+            padding-top: 1rem;
+            /* Alinea el enlace de acción */
+            display: flex;
+            /* Separación a extremos */
+            justify-content: space-between;
+            /* Centrado vertical */
+            align-items: center;
+        }
+
+        /* Enlace clicable hacia un experimento activo */
+        .enlace-experimento {
+            /* Elimina subrayado por defecto */
+            text-decoration: none;
+            /* Color azul laboratorio */
+            color: var(--azul-laboratorio);
+            /* Grosor negrita */
+            font-weight: 700;
+            /* Tamaño compacto */
+            font-size: 0.88rem;
+            /* Transición de color */
+            transition: color 0.2s ease;
+        }
+
+        /* Estado hover del enlace de experimento */
+        .enlace-experimento:hover {
+            /* Cambia al azul hover */
+            color: var(--azul-hover);
+            /* Muestra subrayado solo al interactuar */
+            text-decoration: underline;
+        }
+
+        /* Nota técnica para experimentos pendientes de enlace */
+        .texto-en-espera {
+            /* Fuente de código */
+            font-family: var(--fuente-codigo);
+            /* Tamaño pequeño */
+            font-size: 0.78rem;
+            /* Color secundario */
+            color: var(--texto-secundario);
+        }
+
+        /* ==========================================================================
+           9. PIE DE PÁGINA DEL LABORATORIO
+           ========================================================================== */
+
+        /* Barra inferior del laboratorio */
+        .pie-lab {
+            /* Fondo oscuro dedicado */
+            background-color: var(--fondo-pie);
+            /* Texto claro de contraste */
+            color: var(--texto-pie);
+            /* Relleno interno */
+            padding: 2rem 1.5rem;
+            /* Centrado horizontal */
+            text-align: center;
+            /* Tamaño compacto */
+            font-size: 0.88rem;
+            /* Borde superior sutil para separarlo en modo oscuro */
+            border-top: 1px solid var(--linea-cuadricula);
+        }
+
+        /* Enlace de firma del autor dentro del footer */
+        .pie-lab a {
+            /* Color dorado suave */
+            color: #fbbf24;
+            /* Sin subrayado por defecto */
+            text-decoration: none;
+            /* Grosor seminegrita */
+            font-weight: 600;
+        }
+
+        /* Subrayado interactivo al pasar el cursor sobre la firma */
+        .pie-lab a:hover {
+            /* Activa subrayado */
+            text-decoration: underline;
+        }
+
+        /* ==========================================================================
+           10. ADAPTABILIDAD A CELULARES (MEDIA QUERIES)
+           ========================================================================== */
+
+        /* Ajustes responsivos para pantallas menores a 640px */
+        @media (max-width: 640px) {
+            /* Reduce el relleno de la tarjeta hero en teléfonos */
+            .hero-lab {
+                /* Relleno más compacto */
+                padding: 1.75rem 1.25rem;
+            }
+            /* Fuerza una sola columna en las tarjetas de experimentos */
+            .rejilla-experimentos {
+                /* Una columna del 100% */
+                grid-template-columns: 1fr;
+            }
+            /* Ajusta la separación de controles en la cabecera móvil */
+            .controles-cabecera {
+                /* Espacio reducido entre anclas e interruptores */
+                gap: 0.85rem;
+            }
+            /* Aumenta la reserva de anclaje cuando la cabecera ocupa dos filas en móvil */
+            .hero-lab,
+            .barra-filtros {
+                /* Deja 140px libres para que el menú móvil no tape el título de destino */
+                scroll-margin-top: 140px;
+            }
+        }
+    </style>
+</head>
+
+<!-- Cuerpo del documento con controles de estado CSS en la parte superior -->
+<body>
+
+    <!-- Interruptor CSS para Modo Oscuro (desmarcado = Claro, marcado = Oscuro) -->
+    <input type="checkbox" id="modo-oscuro" class="control-estado">
+
+    <!-- Controles CSS para Idioma (Español activo por defecto) -->
+    <input type="radio" name="idioma-lab" id="idioma-es" class="control-estado" checked>
+    <input type="radio" name="idioma-lab" id="idioma-en" class="control-estado">
+
+    <!-- Controles CSS para Filtrar Experimentos por Disciplina -->
+    <input type="radio" name="filtro-lab" id="filtro-todos" class="control-estado" checked>
+    <input type="radio" name="filtro-lab" id="filtro-ingenieria" class="control-estado">
+    <input type="radio" name="filtro-lab" id="filtro-cocina" class="control-estado">
+    <input type="radio" name="filtro-lab" id="filtro-finanzas" class="control-estado">
+
+    <!-- Envoltorio principal controlado por el selector hermano (~) de los inputs superiores -->
+    <div class="envoltorio-pagina">
+
+        <!-- 1. CABECERA SUPERIOR CON RETORNO AL INDEX, ANCLAS INTERNAS Y CONTROLES -->
+        <header class="cabecera-lab">
+            <!-- Contenedor interno de la barra de navegación -->
+            <div class="contenedor barra-navegacion">
+
+                <!-- Logo izquierdo: único enlace saliente hacia el índice principal del Hub -->
+                <a href="./index.html" class="marca-hub">
+                    <!-- Vector SVG cuyos trazos heredan automáticamente las variables del tema -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 250" class="logo-hub" role="img" aria-label="Logotipo Experimental Hub">
+                        <!-- Marco cuadrado redondeado adaptable al tema claro/oscuro -->
+                        <rect x="6" y="6" width="238" height="238" rx="44" fill="none" stroke="var(--azul-laboratorio)" stroke-width="15" />
+                        <!-- Eje horizontal punteado adaptable -->
+                        <line x1="12" y1="125" x2="238" y2="125" stroke="var(--texto-secundario)" stroke-width="3" stroke-dasharray="8,6" stroke-dashoffset="3" />
+                        <!-- Eje vertical punteado adaptable -->
+                        <line x1="125" y1="12" x2="125" y2="238" stroke="var(--texto-secundario)" stroke-width="3" stroke-dasharray="8,6" stroke-dashoffset="3" />
+                    </svg>
+                    <!-- Bloque de marca del laboratorio -->
+                    <div>
+                        <!-- Nombre del hub experimental -->
+                        <span class="marca-texto">Experimental Hub</span>
+                        <!-- Indicador de ruta actual -->
+                        <span class="marca-sub">/hub/lab</span>
+                    </div>
+                </a>
+
+                <!-- Bloque derecho: anclas a secciones de esta misma página + idioma + tema -->
+                <div class="controles-cabecera">
+
+                    <!-- Navegación interna sin enlaces externos para mantenimiento cero -->
+                    <nav aria-label="Navegación interna del laboratorio">
+                        <!-- Lista de anclas dentro de lab.html -->
+                        <ul class="menu-enlaces">
+                            <!-- Ancla hacia la sección introductoria del laboratorio -->
+                            <li>
+                                <a href="#manifiesto">
+                                    <span class="texto-es">Manifiesto</span>
+                                    <span class="texto-en" lang="en">Overview</span>
+                                </a>
+                            </li>
+                            <!-- Ancla hacia el catálogo de experimentos -->
+                            <li>
+                                <a href="#experimentos">
+                                    <span class="texto-es">Experimentos</span>
+                                    <span class="texto-en" lang="en">Experiments</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                    <!-- Grupo de interruptores interactivos (Idioma y Modo Oscuro) -->
+                    <div class="grupo-utilidades">
+                        <!-- Selector bilingüe Español / Inglés -->
+                        <div class="selector-idioma" role="group" aria-label="Selector de idioma / Language switch">
+                            <!-- Etiqueta que activa el radio #idioma-es -->
+                            <label for="idioma-es" class="opcion-idioma">ES</label>
+                            <!-- Etiqueta que activa el radio #idioma-en -->
+                            <label for="idioma-en" class="opcion-idioma">EN</label>
+                        </div>
+
+                        <!-- Botón que alterna el checkbox #modo-oscuro -->
+                        <label for="modo-oscuro" class="boton-tema" aria-label="Alternar modo claro y oscuro">
+                            <!-- Contenido visible cuando la página está en modo claro -->
+                            <span class="etiqueta-ir-oscuro">
+                                <span aria-hidden="true">&#9790;</span>
+                                <span class="texto-es">Oscuro</span>
+                                <span class="texto-en" lang="en">Dark</span>
+                            </span>
+                            <!-- Contenido visible cuando la página está en modo oscuro -->
+                            <span class="etiqueta-ir-claro">
+                                <span aria-hidden="true">&#9728;</span>
+                                <span class="texto-es">Claro</span>
+                                <span class="texto-en" lang="en">Light</span>
+                            </span>
+                        </label>
+                    </div>
+
+                </div>
+
+            </div>
+        </header>
+
+        <!-- 2. CONTENIDO PRINCIPAL DEL LABORATORIO -->
+        <main>
+            <!-- Contenedor principal centrado -->
+            <div class="contenedor">
+
+                <!-- Sección 1: Manifiesto general atemporal del laboratorio -->
+                <section id="manifiesto" class="hero-lab">
+                    <!-- Etiqueta técnica bilingüe -->
+                    <span class="etiqueta-indice">
+                        <span class="texto-es">Laboratorio de Prototipos Aplicados</span>
+                        <span class="texto-en" lang="en">Applied Prototyping Lab</span>
+                    </span>
+
+                    <!-- Único título principal h1 de la página -->
+                    <h1>Lab</h1>
+
+                    <!-- Manifiesto general sin limitarse a disciplinas fijas -->
+                    <p class="manifiesto-lab">
+                        <span class="texto-es">
+                            Un espacio donde la teoría se convierte en experimentos funcionales. Aquí documento y despliego prototipos interactivos autocontenidos, herramientas ligeras y pruebas técnicas en constante evolución.
+                        </span>
+                        <span class="texto-en" lang="en">
+                            A space where theory turns into functional experiments. Here I document and deploy self-contained interactive prototypes, lightweight tools, and technical tests in constant evolution.
+                        </span>
+                    </p>
+
+                    <!-- Pilares técnicos atemporales (sin contadores fijos que requieran mantenimiento) -->
+                    <div class="metricas-lab">
+                        <!-- Pilar 1: Arquitectura estática pura -->
+                        <div class="metrica-item">
+                            <strong>HTML5 + CSS3</strong>
+                            <span class="texto-es">Arquitectura estática de cero dependencias</span>
+                            <span class="texto-en" lang="en">Zero-dependency static architecture</span>
+                        </div>
+                        <!-- Pilar 2: Estado iterativo continuo -->
+                        <div class="metrica-item">
+                            <strong>
+                                <span class="texto-es">Laboratorio Vivo</span>
+                                <span class="texto-en" lang="en">Living Lab</span>
+                            </strong>
+                            <span class="texto-es">Prototipos activos y en estructuración</span>
+                            <span class="texto-en" lang="en">Active and ongoing prototypes</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Barra de índice y filtros interactivos por disciplina -->
+                <div id="experimentos" class="barra-filtros">
+                    <!-- Título del índice -->
+                    <span class="titulo-catalogo">
+                        <span class="texto-es">Índice de Experimentos</span>
+                        <span class="texto-en" lang="en">Experiments Index</span>
+                    </span>
+
+                    <!-- Controles de filtro en puro CSS sin números fijos -->
+                    <div class="grupo-filtros" role="group" aria-label="Filtrar experimentos por disciplina">
+                        <!-- Filtro: Todos -->
+                        <label for="filtro-todos" class="boton-filtro">
+                            <span class="texto-es">Todos</span>
+                            <span class="texto-en" lang="en">All</span>
+                        </label>
+                        <!-- Filtro: Ingeniería y BIM -->
+                        <label for="filtro-ingenieria" class="boton-filtro">
+                            <span class="texto-es">Ingeniería &amp; BIM</span>
+                            <span class="texto-en" lang="en">Engineering &amp; BIM</span>
+                        </label>
+                        <!-- Filtro: Cocina SI -->
+                        <label for="filtro-cocina" class="boton-filtro">
+                            <span class="texto-es">Cocina SI</span>
+                            <span class="texto-en" lang="en">SI Cooking</span>
+                        </label>
+                        <!-- Filtro: Finanzas y Riesgo -->
+                        <label for="filtro-finanzas" class="boton-filtro">
+                            <span class="texto-es">Finanzas &amp; Riesgo</span>
+                            <span class="texto-en" lang="en">Finance &amp; Risk</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Rejilla de tarjetas con numeración automática CSS (EXP-01, EXP-02...) -->
+                <section class="rejilla-experimentos" aria-label="Catálogo de prototipos del laboratorio">
+
+                    <!-- Experimento 1: Aplicación BIM en producción -->
+                    <article class="tarjeta-experimento cat-ingenieria">
+                        <!-- Bloque superior de contenido -->
+                        <div>
+                            <!-- Encabezado con código autogenerado y píldora de estado -->
+                            <div class="cabecera-tarjeta">
+                                <span class="codigo-exp">BIM 3D</span>
+                                <span class="estado-exp estado-activo">
+                                    <span class="texto-es">En Producción</span>
+                                    <span class="texto-en" lang="en">Live</span>
+                                </span>
+                            </div>
+                            <!-- Título del prototipo -->
+                            <h2>Building Information Modeling App</h2>
+                            <!-- Descripción bilingüe -->
+                            <p>
+                                <span class="texto-es">
+                                    Entorno web tridimensional para la visualización de gemelos digitales, inspección espacial de geometrías constructivas y coordinación de obra en el navegador.
+                                </span>
+                                <span class="texto-en" lang="en">
+                                    Three-dimensional web environment for digital twin visualization, spatial inspection of structural geometries, and construction coordination in the browser.
+                                </span>
+                            </p>
+                            <!-- Etiquetas técnicas -->
+                            <div class="etiquetas-tecnicas">
+                                <span class="etiqueta-tech">BIM</span>
+                                <span class="etiqueta-tech">WebGL / 3D</span>
+                                <span class="etiqueta-tech">Firebase</span>
+                            </div>
+                        </div>
+                        <!-- Pie de tarjeta con enlace externo seguro -->
+                        <div class="pie-tarjeta">
+                            <a href="https://building-information-modeling.web.app" target="_blank" rel="noopener noreferrer" class="enlace-experimento">
+                                <span class="texto-es">Abrir aplicación en vivo &nearr;</span>
+                                <span class="texto-en" lang="en">Open live app &nearr;</span>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Experimento 2: Ingeniería Vectorial SVG existente en hub/svg.html -->
+                    <article class="tarjeta-experimento cat-ingenieria">
+                        <!-- Bloque superior de contenido -->
+                        <div>
+                            <!-- Encabezado con código autogenerado y estado -->
+                            <div class="cabecera-tarjeta">
+                                <span class="codigo-exp">
+                                    <span class="texto-es">GEOMETRÍA</span>
+                                    <span class="texto-en" lang="en">GEOMETRY</span>
+                                </span>
+                                <span class="estado-exp estado-activo">
+                                    <span class="texto-es">En Producción</span>
+                                    <span class="texto-en" lang="en">Live</span>
+                                </span>
+                            </div>
+                            <!-- Título bilingüe -->
+                            <h2>
+                                <span class="texto-es">Ingeniería Vectorial &amp; Matrices Isométricas</span>
+                                <span class="texto-en" lang="en">Vector Engineering &amp; Isometric Matrices</span>
+                            </h2>
+                            <!-- Descripción bilingüe -->
+                            <p>
+                                <span class="texto-es">
+                                    Estudio matemático de gráficos escalables XML/SVG, transformaciones matriciales en proyección isométrica a 30° y comparativa de variantes de identidad BIM.
+                                </span>
+                                <span class="texto-en" lang="en">
+                                    Mathematical study of scalable XML/SVG graphics, matrix transformations in 30° isometric projection, and comparison of BIM identity variants.
+                                </span>
+                            </p>
+                            <!-- Etiquetas técnicas -->
+                            <div class="etiquetas-tecnicas">
+                                <span class="etiqueta-tech">SVG / XML</span>
+                                <span class="etiqueta-tech">2D Matrices</span>
+                                <span class="etiqueta-tech">CSS Grid</span>
+                            </div>
+                        </div>
+                        <!-- Pie de tarjeta con enlace local -->
+                        <div class="pie-tarjeta">
+                            <a href="./svg.html" class="enlace-experimento">
+                                <span class="texto-es">Explorar laboratorio SVG &rarr;</span>
+                                <span class="texto-en" lang="en">Explore SVG lab &rarr;</span>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Experimento 3: Recetario Técnico -->
+                    <article class="tarjeta-experimento cat-cocina">
+                        <!-- Bloque superior de contenido -->
+                        <div>
+                            <!-- Encabezado con código autogenerado y estado -->
+                            <div class="cabecera-tarjeta">
+                                <span class="codigo-exp">
+                                    <span class="texto-es">GASTRONOMÍA SI</span>
+                                    <span class="texto-en" lang="en">SI GASTRONOMY</span>
+                                </span>
+                                <span class="estado-exp estado-proceso">
+                                    <span class="texto-es">Próximo Despliegue</span>
+                                    <span class="texto-en" lang="en">Upcoming</span>
+                                </span>
+                            </div>
+                            <!-- Título bilingüe -->
+                            <h2>
+                                <span class="texto-es">Atelier Culinario &amp; Recetario Técnico</span>
+                                <span class="texto-en" lang="en">Culinary Atelier &amp; Technical Recipe Book</span>
+                            </h2>
+                            <!-- Descripción bilingüe -->
+                            <p>
+                                <span class="texto-es">
+                                    Formulaciones gastronómicas documentadas con precisión en gramos, control térmico y calculadoras de escalamiento proporcional programadas sin JavaScript.
+                                </span>
+                                <span class="texto-en" lang="en">
+                                    Culinary formulations documented with gram-level precision, thermal control, and proportional scaling calculators built without JavaScript.
+                                </span>
+                            </p>
+                            <!-- Etiquetas técnicas -->
+                            <div class="etiquetas-tecnicas">
+                                <span class="etiqueta-tech">SI Units</span>
+                                <span class="etiqueta-tech">Pure CSS :checked</span>
+                                <span class="etiqueta-tech">HTML5</span>
+                            </div>
+                        </div>
+                        <!-- Pie de tarjeta en espera de despliegue -->
+                        <div class="pie-tarjeta">
+                            <span class="texto-en-espera">
+                                <span class="texto-es">Ruta asignada: ./recetario/index.html</span>
+                                <span class="texto-en" lang="en">Assigned route: ./recetario/index.html</span>
+                            </span>
+                        </div>
+                    </article>
+
+                    <!-- Experimento 4: Modelos Financieros y Riesgo -->
+                    <article class="tarjeta-experimento cat-finanzas">
+                        <!-- Bloque superior de contenido -->
+                        <div>
+                            <!-- Encabezado con código autogenerado y estado -->
+                            <div class="cabecera-tarjeta">
+                                <span class="codigo-exp">
+                                    <span class="texto-es">CUANTITATIVO</span>
+                                    <span class="texto-en" lang="en">QUANTITATIVE</span>
+                                </span>
+                                <span class="estado-exp estado-proceso">
+                                    <span class="texto-es">En Estructuración</span>
+                                    <span class="texto-en" lang="en">In Progress</span>
+                                </span>
+                            </div>
+                            <!-- Título bilingüe -->
+                            <h2>
+                                <span class="texto-es">Modelos de Pre-Inversión &amp; Riesgo</span>
+                                <span class="texto-en" lang="en">Pre-Investment &amp; Risk Models</span>
+                            </h2>
+                            <!-- Descripción bilingüe -->
+                            <p>
+                                <span class="texto-es">
+                                    Simuladores interactivos para análisis de viabilidad inmobiliaria, matrices de decisión multicriterio ponderada y verificación de sensibilidad financiera.
+                                </span>
+                                <span class="texto-en" lang="en">
+                                    Interactive simulators for real estate feasibility analysis, weighted multi-criteria decision matrices, and financial sensitivity verification.
+                                </span>
+                            </p>
+                            <!-- Etiquetas técnicas -->
+                            <div class="etiquetas-tecnicas">
+                                <span class="etiqueta-tech">FEL / PMBOK</span>
+                                <span class="etiqueta-tech">Risk</span>
+                                <span class="etiqueta-tech">HTML Tables</span>
+                            </div>
+                        </div>
+                        <!-- Pie de tarjeta en espera -->
+                        <div class="pie-tarjeta">
+                            <span class="texto-en-espera">
+                                <span class="texto-es">En diseño de especificación</span>
+                                <span class="texto-en" lang="en">Specification in design</span>
+                            </span>
+                        </div>
+                    </article>
+
+                </section>
+
+            </div>
+        </main>
+
+        <!-- 3. PIE DE PÁGINA DEL LABORATORIO -->
+        <footer class="pie-lab">
+            <!-- Firma bilingüe sin la etiqueta antigua Knowledge Hub -->
+            <p>
+                Experimental Hub &bull; Lab &bull;
+                <span class="texto-es">Desarrollado por</span>
+                <span class="texto-en" lang="en">Built by</span>
+                <a href="./dleonva.html">David LV</a> &bull; 2026
+            </p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
