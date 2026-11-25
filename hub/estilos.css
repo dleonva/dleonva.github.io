@@ -42,6 +42,9 @@ html {
     /* Fondo gris carbón muy oscuro */
     /* background-color: #121212; */
 
+    /* Suaviza el recorrido vertical al hacer clic en los enlaces internos */
+    scroll-behavior: smooth;
+
 
 
     /* Texto gris oscuro casi negro, mejor contraste que el negro puro */
@@ -289,7 +292,11 @@ nav ul {
     padding: 10px;
     /* Centra los elementos horizontalmente */
     justify-content: center;
+    /* Permite que los enlaces se organicen en otra fila en celulares */
+    flex-wrap: wrap;
 }
+
+
 
 nav a {
     /* Quita el subrayado azul que traen los enlaces por defecto */
@@ -334,3 +341,10 @@ main {
     margin: 0 auto;
     padding: 40px 20px;
 }
+
+/* Evita que la barra superior fija tape el título al saltar a un ancla interna */
+section[id] {
+    /* Reserva 80px libres arriba del destino al desplazarse */
+    scroll-margin-top: 80px;
+}
+
