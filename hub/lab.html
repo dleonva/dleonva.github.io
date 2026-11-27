@@ -354,6 +354,12 @@
             cursor: pointer;
             /* Impide selección accidental de texto al hacer clic */
             user-select: none;
+            /* Alinea la bandera circular y el texto ES/EN en fila horizontal */
+            display: inline-flex;
+            /* Centra verticalmente la bandera respecto a las letras */
+            align-items: center;
+            /* Separación de 0.35rem entre la bandera y el código de idioma */
+            gap: 0.35rem;
             /* Fuente monoespaciada técnica */
             font-family: var(--fuente-codigo);
             /* Tamaño compacto */
@@ -362,12 +368,36 @@
             font-weight: 700;
             /* Color secundario cuando está inactivo */
             color: var(--texto-secundario);
-            /* Relleno interno */
-            padding: 0.25rem 0.6rem;
+            /* Relleno interno equilibrado con la bandera */
+            padding: 0.25rem 0.6rem 0.25rem 0.45rem;
             /* Forma de píldora */
             border-radius: var(--radio-boton);
             /* Transición suave de colores */
             transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        /* Estilo visual de cada bandera vectorial circular */
+        .bandera-circular {
+            /* Ancho exacto de 15px proporcionado a la tipografía del botón */
+            width: 15px;
+            /* Alto exacto de 15px para garantizar un círculo perfecto */
+            height: 15px;
+            /* Redondea el contenedor SVG en círculo */
+            border-radius: 50%;
+            /* Evita que Flexbox deforme el círculo en pantallas angostas */
+            flex-shrink: 0;
+            /* Elimina espacios inferiores propios de elementos inline */
+            display: block;
+            /* Anillo sutil para separar el blanco de la bandera sobre fondos claros */
+            box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.16);
+        }
+
+        /* Aclara el anillo exterior de la bandera cuando el botón o el tema son oscuros */
+        #idioma-es:checked ~ .envoltorio-pagina label[for="idioma-es"] .bandera-circular,
+        #idioma-en:checked ~ .envoltorio-pagina label[for="idioma-en"] .bandera-circular,
+        #modo-oscuro:checked ~ .envoltorio-pagina .bandera-circular {
+            /* Borde claro semitransparente para mantener el contorno definido en oscuro */
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.28);
         }
 
         /* Botón interruptor de Modo Claro / Modo Oscuro */
@@ -1114,11 +1144,73 @@
                     <!-- Grupo de interruptores interactivos (Idioma y Modo Oscuro) -->
                     <div class="grupo-utilidades">
                         <!-- Selector bilingüe Español / Inglés -->
+                        <!-- Selector bilingüe Español (Colombia) / Inglés (USA) -->
                         <div class="selector-idioma" role="group" aria-label="Selector de idioma / Language switch">
-                            <!-- Etiqueta que activa el radio #idioma-es -->
-                            <label for="idioma-es" class="opcion-idioma">ES</label>
-                            <!-- Etiqueta que activa el radio #idioma-en -->
-                            <label for="idioma-en" class="opcion-idioma">EN</label>
+
+                            <!-- Etiqueta que activa el radio #idioma-es con bandera circular de Colombia -->
+                            <label for="idioma-es" class="opcion-idioma">
+                                <!-- Bandera vectorial circular de Colombia en proporción oficial 2:1:1 -->
+                                <svg class="bandera-circular" viewBox="0 0 24 24" aria-hidden="true">
+                                    <!-- Define la máscara circular de recorte -->
+                                    <defs>
+                                        <clipPath id="clip-bandera-co">
+                                            <circle cx="12" cy="12" r="12" />
+                                        </clipPath>
+                                    </defs>
+                                    <!-- Grupo de franjas recortadas dentro del círculo -->
+                                    <g clip-path="url(#clip-bandera-co)">
+                                        <!-- Franja superior amarilla (50% de la altura) -->
+                                        <rect width="24" height="12" y="0" fill="#FCD116" />
+                                        <!-- Franja intermedia azul (25% de la altura) -->
+                                        <rect width="24" height="6" y="12" fill="#003893" />
+                                        <!-- Franja inferior roja (25% de la altura) -->
+                                        <rect width="24" height="6" y="18" fill="#CE1126" />
+                                    </g>
+                                </svg>
+                                <!-- Código de idioma español -->
+                                ES
+                            </label>
+
+                            <!-- Etiqueta que activa el radio #idioma-en con bandera circular de Estados Unidos -->
+                            <label for="idioma-en" class="opcion-idioma">
+                                <!-- Bandera vectorial circular de USA en lienzo 26x26 (2 unidades por cada una de las 13 franjas) -->
+                                <svg class="bandera-circular" viewBox="0 0 26 26" aria-hidden="true">
+                                    <!-- Define la máscara circular de recorte -->
+                                    <defs>
+                                        <clipPath id="clip-bandera-us">
+                                            <circle cx="13" cy="13" r="13" />
+                                        </clipPath>
+                                    </defs>
+                                    <!-- Grupo de franjas y cantón recortados dentro del círculo -->
+                                    <g clip-path="url(#clip-bandera-us)">
+                                        <!-- Base blanca que conforma las 6 franjas blancas -->
+                                        <rect width="26" height="26" fill="#FFFFFF" />
+                                        <!-- 7 franjas rojas equidistantes de 2 unidades cada una -->
+                                        <rect width="26" height="2" y="0" fill="#B22234" />
+                                        <rect width="26" height="2" y="4" fill="#B22234" />
+                                        <rect width="26" height="2" y="8" fill="#B22234" />
+                                        <rect width="26" height="2" y="12" fill="#B22234" />
+                                        <rect width="26" height="2" y="16" fill="#B22234" />
+                                        <rect width="26" height="2" y="20" fill="#B22234" />
+                                        <rect width="26" height="2" y="24" fill="#B22234" />
+                                        <!-- Cantón azul superior izquierdo que cubre las primeras 7 franjas -->
+                                        <rect width="13.5" height="14" x="0" y="0" fill="#3C3B6E" />
+                                        <!-- Retícula simplificada de estrellas blancas legibles a 15px -->
+                                        <circle cx="5.2" cy="5.2" r="0.75" fill="#FFFFFF" />
+                                        <circle cx="8.2" cy="5.2" r="0.75" fill="#FFFFFF" />
+                                        <circle cx="11.2" cy="5.2" r="0.75" fill="#FFFFFF" />
+                                        <circle cx="5.2" cy="8.2" r="0.75" fill="#FFFFFF" />
+                                        <circle cx="8.2" cy="8.2" r="0.75" fill="#FFFFFF" />
+                                        <circle cx="11.2" cy="8.2" r="0.75" fill="#FFFFFF" />
+                                        <circle cx="5.2" cy="11.2" r="0.75" fill="#FFFFFF" />
+                                        <circle cx="8.2" cy="11.2" r="0.75" fill="#FFFFFF" />
+                                        <circle cx="11.2" cy="11.2" r="0.75" fill="#FFFFFF" />
+                                    </g>
+                                </svg>
+                                <!-- Código de idioma inglés -->
+                                EN
+                            </label>
+
                         </div>
 
                         <!-- Botón que alterna el checkbox #modo-oscuro -->
